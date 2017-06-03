@@ -19,6 +19,18 @@ export class NestednavComponent implements OnInit {
     if(this.SelectedEntity==Entity){
       this.SelectedEntity=null
       Entity.Selected=false;
+      if(Entity.ParentID==null){
+       for(let i=0;i<this.menudata.length;i++){
+         if(this.menudata[i].ChildNodes.length!=0){
+           for(let j =0 ;j<this.menudata[i].ChildNodes.length;j++){
+             console.log(this.menudata[i].ChildNodes[j].Entity.Text)
+             this.menudata[i].ChildNodes[j].Entity.Selected=false;
+           this.Recurisve(this.menudata[i].ChildNodes[j])
+           }
+
+         }
+       }
+      }
       console.log("close")
     }else{
       this.SelectedEntity=Entity
@@ -27,6 +39,15 @@ export class NestednavComponent implements OnInit {
     }
   }
     console.log(Entity)
+  }
+  Recurisve(data){
+
+    if(data.length!=0){
+           for(let j =0 ;j<data.ChildNodes.length;j++){
+            console.log(data.ChildNodes[j].Entity.Text)
+            data.ChildNodes[j].Entity.Selected=false
+           }
+        }
   }
 
 }
