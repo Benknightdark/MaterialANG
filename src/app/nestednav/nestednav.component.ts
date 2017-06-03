@@ -14,7 +14,8 @@ export class NestednavComponent implements OnInit {
   ngOnInit() {
   }
   onClick(Entity){
-
+    //判斷是否有ccid存在
+  if(Entity.CCID==null){
     if(this.SelectedEntity==Entity){
       this.SelectedEntity=null
       Entity.Selected=false;
@@ -24,6 +25,8 @@ export class NestednavComponent implements OnInit {
       Entity.Selected=true;;
  console.log("open")
     }
+  }
+
 
     console.log(Entity)
   }

@@ -1,15 +1,10 @@
 <md-sidenav-container class="example-container" fullscreen>
   <md-sidenav #sidenav class="example-sidenav">
     <md-list dense>
-
-      <md-list-item> <a href="#">Pepper</a>  </md-list-item>
-      <div  *ngIf="ShowMenu">
-
-         <app-nestednav [menudata]="menudata"></app-nestednav>
+      <div *ngIf="ShowMenu">
+        <app-nestednav [menudata]="menudata"></app-nestednav>
       </div>
-
     </md-list>
-
   </md-sidenav>
 
   <div class="example-sidenav-content">
