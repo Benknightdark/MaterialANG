@@ -37,6 +37,10 @@ export class NestednavComponent implements OnInit {
       }
       console.log("close")
     }else{
+      if(this.SelectedEntity!=null){
+this.SelectedEntity.Selected=false;
+      }
+
       this.SelectedEntity=Entity
       Entity.Selected=true;;
       console.log("open")
