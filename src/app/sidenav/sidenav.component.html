@@ -1,12 +1,20 @@
-
 <md-sidenav-container class="example-container" fullscreen>
   <md-sidenav #sidenav class="example-sidenav">
-    Jolly good!dfsaaaaaaaaa
+    <md-list dense>
+
+      <md-list-item> <a href="#">Pepper</a>  </md-list-item>
+      <div  *ngIf="ShowMenu">
+
+         <app-nestednav [menudata]="menudata"></app-nestednav>
+      </div>
+
+    </md-list>
+
   </md-sidenav>
 
   <div class="example-sidenav-content">
     <button md-button (click)="sidenav.open()">
-      Open sidenav
+      menu
     </button>
   </div>
 
