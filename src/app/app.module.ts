@@ -10,6 +10,7 @@ import { ButtonComponent } from './button/button.component';
 import {MdTabsModule} from '@angular/material';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { NestednavComponent } from './nestednav/nestednav.component';
+import { AppRoutingModule } from "./app-routing.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +23,13 @@ import { NestednavComponent } from './nestednav/nestednav.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+      AppRoutingModule,
     MdButtonModule,
     MdCheckboxModule,
     MdTabsModule,
     MdSidenavModule,
-    MdListModule
+    MdListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
