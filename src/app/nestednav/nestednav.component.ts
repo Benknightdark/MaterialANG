@@ -62,7 +62,8 @@ this.SelectedEntity.Selected=false;
   ReturnTab(Depth){
     let tab="";
     for(let i=1;i<Depth;i++){
-      return tab=tab+" "
+      tab=tab+"&emsp;"
     }
+    return tab;
   }
 }
