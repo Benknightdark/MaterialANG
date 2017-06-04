@@ -17,8 +17,10 @@ export class NestednavComponent implements OnInit {
     //判斷是否有ccid存在
   if(Entity.CCID==null){
     if(this.SelectedEntity==Entity){
-      this.SelectedEntity=null
-      Entity.Selected=false;
+     // this.SelectedEntity.Selected=false;
+    //  Entity=this.SelectedEntity;
+     this.SelectedEntity=null
+     Entity.Selected=false;
       //遞迴關閉與主menu節點相關的子menu節點
       if(Entity.ParentID==null){
        for(let i=0;i<this.menudata.length;i++){
@@ -56,5 +58,11 @@ this.SelectedEntity.Selected=false;
             data.ChildNodes[j].Entity.Selected=false
            }
         }
+  }
+  ReturnTab(Depth){
+    let tab="";
+    for(let i=1;i<Depth;i++){
+      return tab=tab+" "
+    }
   }
 }
