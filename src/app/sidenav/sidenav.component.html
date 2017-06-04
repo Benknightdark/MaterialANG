@@ -1,6 +1,6 @@
 
 <md-sidenav-container    fullscreen>
-   <md-toolbar>My App</md-toolbar>
+   <md-toolbar color="primary">My App</md-toolbar>
   <md-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
     <md-list dense>
       <div *ngIf="ShowMenu">
@@ -11,11 +11,13 @@
 
   <div>
 
-    <button md-button (click)="showside(sidenav)">
+    <button md-button color="primary" (click)="showside(sidenav)">
       Close/Show menu
     </button>
 
   </div>
+
 <router-outlet></router-outlet>
+
 </md-sidenav-container>
 
