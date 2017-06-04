@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { HomeComponent } from "app/home/home.component";
 
 const routes: Routes = [
-
+{
+    path: 'home', component: HomeComponent
+  }
 
 
 ];
@@ -10,7 +13,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     useHash: false,
-    enableTracing: false,
+    enableTracing: true,
    // preloadingStrategy: PreloadAllModules
   })],
   exports: [RouterModule]

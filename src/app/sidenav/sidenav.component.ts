@@ -17,6 +17,8 @@ export class SidenavComponent implements OnInit {
    .map(res=>res.json()[0]).subscribe(data=>{this.menudata=data
    this.ShowMenu=true
   })
-  }
+
+}
+showside(a){console.log(a);a.opened=!a.opened}
 
 }

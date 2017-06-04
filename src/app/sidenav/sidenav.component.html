@@ -1,16 +1,21 @@
-<md-sidenav-container class="example-container" fullscreen>
-  <md-sidenav #sidenav class="example-sidenav">
+
+<md-sidenav-container    fullscreen>
+   <md-toolbar>My App</md-toolbar>
+  <md-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
     <md-list dense>
       <div *ngIf="ShowMenu">
-        <app-nestednav [menudata]="menudata"></app-nestednav>
+        <app-nestednav [menudata]="menudata" ></app-nestednav>
       </div>
     </md-list>
   </md-sidenav>
 
-  <div class="example-sidenav-content">
-    <button md-button (click)="sidenav.open()">
-      menu
-    </button>
-  </div>
+  <div>
 
+    <button md-button (click)="showside(sidenav)">
+      Close/Show menu
+    </button>
+
+  </div>
+<router-outlet></router-outlet>
 </md-sidenav-container>
+
