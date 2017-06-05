@@ -11,6 +11,8 @@ export class NestednavComponent implements OnInit {
   constructor() { }
   @Input() menudata
   SelectedEntity
+  showAddButton:boolean=false;
+  TouchedEntityID
   ngOnInit() {
   }
   onClick(Entity){

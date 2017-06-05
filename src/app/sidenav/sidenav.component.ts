@@ -19,6 +19,6 @@ export class SidenavComponent implements OnInit {
   })
 
 }
-showside(a){console.log(a);a.opened=!a.opened}
+showside(a){a.opened=!a.opened}
 
 }

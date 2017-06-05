@@ -1,23 +1,35 @@
 <div *ngFor="let item of menudata ">
   <md-list-item (click)="onClick(item.Entity)">
-     <md-icon md-list-icon>{{item.Entity.Icon}}</md-icon>
-
-   <div *ngIf="item.Entity.CCID==null">
-
-<div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text"> </div>
-   </div>
+    <!-- <md-icon md-list-icon >{{item.Entity.Icon}}</md-icon>-->
+    <button md-icon-button>
+      <md-icon class="md-24">{{item.Entity.Icon}}</md-icon>
+    </button>
+    <div *ngIf="item.Entity.CCID==null">
+      <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line
+      (mouseover)="showAddButton=true;TouchedEntityID=item.Entity.ID"
+      (mouseleave)="showAddButton=false;TouchedEntityID=false"> </div>
+    </div>
     <div *ngIf="item.Entity.CCID!=null">
       <a [routerLink]="['/home']">
-       <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text"
-       ></div>
+        <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line></div>
       </a>
 
-   </div>
-
+    </div>
+    <div *ngIf="item.Entity.CCID==null">
+      <button md-icon-button *ngIf="showAddButton">
+        <div *ngIf="item.Entity.Selected&&TouchedEntityID==item.Entity.ID">
+           <md-icon class="md-24">remove</md-icon>
+        </div>
+       <div *ngIf="!item.Entity.Selected&&TouchedEntityID==item.Entity.ID">
+           <md-icon class="md-24">add</md-icon>
+        </div>
+    </button>
+    </div>
   </md-list-item>
   <div *ngIf="item.ChildNodes.length!=0">
     <div *ngIf="item.Entity.Selected">
       <app-nestednav [menudata]="item.ChildNodes"></app-nestednav>
     </div>
   </div>
+
 </div>
