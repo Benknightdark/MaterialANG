@@ -1,11 +1,17 @@
 
-<md-sidenav-container    fullscreen>
+<md-toolbar color="primary" class="md-medium-tall" style="position:fixed; width: 100%;">
+     <md-icon (click)="showside(sidenav)">menu</md-icon>
+   <span>My  App</span>
+     </md-toolbar>
 
-   <md-toolbar color="primary">
+<md-sidenav-container    fullscreen style="top: 64px !important" >
+
+   <!--<md-toolbar color="primary">
    <md-icon (click)="showside(sidenav)">menu</md-icon>
    <span>My  App</span>
 
-     </md-toolbar>
+     </md-toolbar>-->
+
 
   <md-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
     <md-list dense>
@@ -18,10 +24,5 @@
  <div class="app-container">
     <router-outlet></router-outlet>
  </div>
-
-
-
-
-
 </md-sidenav-container>
 
