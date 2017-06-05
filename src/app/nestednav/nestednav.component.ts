@@ -12,7 +12,7 @@ export class NestednavComponent implements OnInit {
   @Input() menudata
   SelectedEntity
   showAddButton:boolean=false;
-  TouchedEntityID
+  TouchedEntityID//存取滑鼠指到的選單ID
   ngOnInit() {
   }
   onClick(Entity){
