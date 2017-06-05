@@ -13,10 +13,10 @@
      </md-toolbar>-->
 
 
-  <md-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+  <md-sidenav #sidenav class="example-sidenav" mode="side" [opened]="!AutoHideMenu">
     <md-list dense>
       <div *ngIf="ShowMenu">
-        <app-nestednav [menudata]="menudata" ></app-nestednav>
+        <app-nestednav [menudata]="menudata" [sidenav]="sidenav"></app-nestednav>
       </div>
     </md-list>
   </md-sidenav>

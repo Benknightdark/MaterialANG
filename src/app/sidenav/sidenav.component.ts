@@ -1,6 +1,6 @@
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/'
+import { Observable } from 'rxjs/'
 import 'rxjs'
 @Component({
   selector: 'app-sidenav',
@@ -9,19 +9,32 @@ import 'rxjs'
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private http:Http) { }
+  constructor(private http: Http) { }
   menudata
-  ShowMenu:boolean=false;
-
+  ShowMenu: boolean = false;
+  AutoHideMenu: boolean = false;//if using mobile then set to true
   ngOnInit() {
 
-   this.http.get("http://localhost:3000/data")
-   .map(res=>res.json()[0]).subscribe(data=>{this.menudata=data
-   this.ShowMenu=true
-  })
+    this.http.get("http://localhost:3000/data")
+      .map(res => res.json()[0]).subscribe(data => {
+        this.menudata = data
+        this.ShowMenu = true
+      })
+    //detect browser width change event
+    const $resizeEvent = Observable.fromEvent(window, 'resize')
+      .map(() => {
+        return document.documentElement.clientWidth;
+      })
+      .debounceTime(200)
+    $resizeEvent.subscribe(data => {
+      console.log(data)
+      if (data < 500) {
+        this.AutoHideMenu = true;;
+      }
+    });
 
-}
-showside(a){a.opened=!a.opened}
+  }
+  showside(a) { a.opened = !a.opened }
 
 }
 /*
