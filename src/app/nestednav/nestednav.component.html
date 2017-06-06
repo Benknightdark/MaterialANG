@@ -1,20 +1,21 @@
 <div *ngFor="let item of menudata ">
   <md-list-item (mouseover)="showAddButton=true;TouchedEntityID=item.Entity.ID" (mouseleave)="showAddButton=false;TouchedEntityID=false">
-    <!-- <md-icon md-list-icon >{{item.Entity.Icon}}</md-icon>-->
+    <!--
+    [routerLink]="['/home']"
+    <md-icon md-list-icon >{{item.Entity.Icon}}</md-icon>-->
     <button md-icon-button>
       <md-icon class="md-24">{{item.Entity.Icon}}</md-icon>
     </button>
 
     <div *ngIf="item.Entity.CCID==null">
-      <!-- <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)">
+      <a md-button
 
-        </div>-->
-
-      <a md-button routerLink="." [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)"></a>
+      href="javasrcipt:void(0)"
+       [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)"></a>
     </div>
 
     <div *ngIf="item.Entity.CCID!=null">
-      <a md-button [routerLink]="['/home']" [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line>
+      <a md-button  [routerLink]="['/home']" [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line>
         </a>
     </div>
 
