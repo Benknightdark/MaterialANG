@@ -259,9 +259,9 @@
   ,
   "radio":[],
   "chekbox":[],
-  "select":[],//下拉選項
-  "DatePicker":[],//日期下拉選項
-  "Slider":[]//滑軌
+  "select":[],
+  "DatePicker":[],
+  "Slider":[]
 }
 
   ]

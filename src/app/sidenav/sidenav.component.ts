@@ -21,17 +21,34 @@ export class SidenavComponent implements OnInit {
         this.ShowMenu = true
       })
     //detect browser width change event
-    const $resizeEvent = Observable.fromEvent(window, 'resize')
+    Observable.fromEvent(window, 'resize')
       .map(() => {
         return document.documentElement.clientWidth;
       })
-      .debounceTime(200)
-    $resizeEvent.subscribe(data => {
+     // .debounceTime(200)
+    .subscribe(data => {
       console.log(data)
       if (data < 500) {
         this.AutoHideMenu = true;;
+      }else{
+        this.AutoHideMenu = false;;
       }
     });
+
+     Observable.fromEvent(window, 'load')
+      .map(() => {
+        return document.documentElement.clientWidth;
+      })
+      //.debounceTime(200)
+    .subscribe(data => {
+      console.log(data)
+      if (data < 500) {
+        this.AutoHideMenu = true;;
+      }else{
+        this.AutoHideMenu = false;;
+      }
+    });
+
 
   }
   showside(a) { a.opened = !a.opened }

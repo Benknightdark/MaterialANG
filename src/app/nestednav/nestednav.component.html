@@ -1,25 +1,25 @@
-
 <div *ngFor="let item of menudata ">
   <md-list-item (mouseover)="showAddButton=true;TouchedEntityID=item.Entity.ID" (mouseleave)="showAddButton=false;TouchedEntityID=false">
-      <!-- <md-icon md-list-icon >{{item.Entity.Icon}}</md-icon>-->
-      <button md-icon-button>
+    <!-- <md-icon md-list-icon >{{item.Entity.Icon}}</md-icon>-->
+    <button md-icon-button>
       <md-icon class="md-24">{{item.Entity.Icon}}</md-icon>
     </button>
 
-      <div *ngIf="item.Entity.CCID==null">
-        <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)"> </div>
-      </div>
+    <div *ngIf="item.Entity.CCID==null">
+      <!-- <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)">
 
-      <div *ngIf="item.Entity.CCID!=null">
-        <a [routerLink]="['/home']">
+        </div>-->
 
-          <div [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line></div>
+      <a md-button routerLink="." [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line (click)="onClick(item.Entity)"></a>
+    </div>
 
+    <div *ngIf="item.Entity.CCID!=null">
+      <a md-button [routerLink]="['/home']" [innerHTML]="ReturnTab(item.Depth)+ item.Entity.Text" md-line>
         </a>
-      </div>
+    </div>
 
-      <div *ngIf="item.Entity.CCID==null">
-        <button md-icon-button *ngIf="showAddButton">
+    <div *ngIf="item.Entity.CCID==null">
+      <button md-icon-button *ngIf="showAddButton">
           <div *ngIf="item.Entity.Selected&&TouchedEntityID==item.Entity.ID">
             <md-icon class="md-24">remove</md-icon>
           </div>
@@ -27,7 +27,7 @@
             <md-icon class="md-24">add</md-icon>
           </div>
       </button>
-      </div>
+    </div>
   </md-list-item>
 
   <div *ngIf="item.ChildNodes.length!=0">
@@ -37,4 +37,3 @@
   </div>
 
 </div>
-
