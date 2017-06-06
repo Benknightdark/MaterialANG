@@ -10,13 +10,17 @@ import {
   // MdSidenavContainer, MdToolbarModule,
   MaterialModule
 } from '@angular/material';
+import { MetaformService } from "../services/metaform.service";
+import { HttpModule } from "@angular/http";
 @NgModule({
   imports: [
     CommonModule,
     FormMetaRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpModule
   ],
   declarations: [FormMetaformComponent],
-  exports:[FormMetaformComponent]
+  exports:[FormMetaformComponent],
+  providers:[MetaformService]
 })
 export class FormMetaModule { }

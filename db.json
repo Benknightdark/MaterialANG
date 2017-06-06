@@ -234,8 +234,9 @@
       "Depth": 1
     }]
   ],
-  "FormMeta": [{
-        "input": {
+  "FormMeta": [
+    [{
+
           "name": "輸入選項",
           "value": "input",
           "types":
@@ -263,27 +264,27 @@
 
             ],
           "isMultiLine": [true, false]
-        }
-        ,
-        "radio": {
-          "name": "單選選項",
-          "value": "radio"
-        },
-        "chekbox": {
-          "name": "複選選項",
-          "value": "checkbox"
-        },
-        "select": {
-          "name": "下拉選項",
-          "value": "select",
-          "isMulti": [true, false]
-        },
-        "DatePicker": {
-          "name": "日期選項",
-          "value": "DatePicker"
-        }
 
-      }
+      }],
+      [{
+        "name": "單選選項",
+        "value": "radio"
+      }],
+      [{
+        "name": "複選選項",
+        "value": "checkbox"
+      }],
+      [{
+        "name": "下拉選項",
+        "value": "select",
+        "isMulti": [true, false]
+      }],
+      [{
+        "name": "日期選項",
+        "value": "DatePicker"
+      }]
+
+
 
     ]
 
