@@ -240,5 +240,32 @@
         "Depth": 1
       }
     ]
+  ],
+  "FormMeta":[
+{
+  "input":{
+    "types":[
+      {"name":"文字","value":"text"},
+        {"name":"電話號碼","value":"tel"},
+          {"name":"手機號碼","value":"mobile"},
+            {"name":"數字","value":"number"},
+              {"name":"電子信箱","value":"email"},
+               
+    ],
+    "isMulti":[true,false]
+    
+  }
+
+  ,
+  "radio":[],
+  "chekbox":[],
+  "select":[],//下拉選項
+  "DatePicker":[],//日期下拉選項
+  "Slider":[]//滑軌
+}
+
   ]
+  
+  ,
+  "FormData":[]
 }
