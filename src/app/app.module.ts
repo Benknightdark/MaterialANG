@@ -17,6 +17,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { NestednavComponent } from './nestednav/nestednav.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from './home/home.component';
+import { FormMetaModule } from "app/form-meta/form-meta.module";
+import { RouterModule } from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +32,11 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-      AppRoutingModule,
+
       MaterialModule,
+      FormMetaModule,
+      //RouterModule,
+ AppRoutingModule
     // MdButtonModule,
     // MdCheckboxModule,
     // MdTabsModule,

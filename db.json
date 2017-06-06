@@ -263,9 +263,7 @@
 
             ],
           "isMultiLine": [true, false]
-
         }
-
         ,
         "radio": {
           "name": "單選選項",

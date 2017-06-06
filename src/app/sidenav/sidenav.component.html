@@ -19,6 +19,10 @@
 
   <md-sidenav #sidenav class="example-sidenav" mode="side" [opened]="!AutoHideMenu">
     <md-list dense>
+        <md-list-item>
+           <a md-button [routerLink]="['/formmetaform']" md-line>報名表單建立</a>
+        </md-list-item>
+
       <div *ngIf="ShowMenu">
         <app-nestednav [menudata]="menudata" [sidenav]="sidenav"></app-nestednav>
       </div>
