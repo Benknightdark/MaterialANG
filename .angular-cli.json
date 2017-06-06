@@ -9,6 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "assets/manifest.json",
+        "service-worker.js",
         "favicon.ico"
       ],
       "index": "index.html",
