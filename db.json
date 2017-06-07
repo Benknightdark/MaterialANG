@@ -260,6 +260,15 @@
               {
                 "name": "電子信箱",
                 "value": "email"
+              },
+                  {
+                "name": "日期",
+                "value": "date"
+              },
+              {
+                "name":"日期時間",
+
+                "value":"datetime-local"
               }
 
             ],
