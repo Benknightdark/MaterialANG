@@ -56,18 +56,15 @@ export class FormMetaformComponent implements OnInit {
 
   }
   ReturFormOption(t) {
-    if (t == ""||t==null) {
+    if (t == "" || t == null) {
       return {}
     }
-    else if (t=="input"){
+    else if (t == "input") {
       return {
         InputType: new FormControl("", [Validators.required]),
         isRequiredInput: new FormControl("", [Validators.required]),
       }
     }
-
-
-
   }
   onformoptionsChange(i) {
     const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
@@ -75,7 +72,7 @@ export class FormMetaformComponent implements OnInit {
     if (SelectedFormOption.valid) {
       switch (SelectedFormOption.value) {
         case "input": {
-          this.formoptionSettingType="input"
+          this.formoptionSettingType = "input"
           break;
         }
         default: {
@@ -85,7 +82,7 @@ export class FormMetaformComponent implements OnInit {
       }
 
     } else {
-
+      this.formoptionSettingType=null;
     }
 
   }
