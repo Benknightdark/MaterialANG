@@ -12,12 +12,15 @@ import {
 } from '@angular/material';
 import { MetaformService } from "../services/metaform.service";
 import { HttpModule } from "@angular/http";
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FormMetaRoutingModule,
     MaterialModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [FormMetaformComponent],
   exports:[FormMetaformComponent],

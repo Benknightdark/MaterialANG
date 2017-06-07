@@ -1,34 +1,47 @@
 <md-card>
   <md-card-header>
     <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
+    <md-slide-toggle>開啟表單預覽</md-slide-toggle>
   </md-card-header>
+  <div *ngIf="showform">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <md-card-content>
 
-  <md-card-content>
-    <div *ngIf="showform">
-      <form>
-        <table cellspacing="0" style="width:100%">
+        <table cellspacing="0" style="width:100%; margin-bottom:5%">
           <tr>
             <td>
               <md-input-container style="width:100%">
-                <input mdInput placeholder="表單名稱">
+                <input mdInput placeholder="表單名稱" formControlName="title" type="text">
+
               </md-input-container>
+              <div *ngIf="form['controls']['title'].touched&& form['controls']['title'].errors">
+                <span>*需輸入值</span>
+              </div>
             </td>
           </tr>
         </table>
+        <div formArrayName="formoptions">
+          <div *ngFor="let md of MetaformDataArray;let i=index">
 
-        <div *ngFor="let md of MetaformDataArray">
-        <md-select placeholder="選擇表單選項">
-          <md-option *ngFor="let m of md" [value]="m[0].value">
-            {{ m[0].name }}
-          </md-option>
-        </md-select>
-          <md-divider></md-divider>
+            <md-select placeholder="表單選項" [formControlName]="i">
+              <md-option *ngFor="let m of md" [value]="m[0].value">
+                {{ m[0].name }}
+              </md-option>
+            </md-select>
+
+
+            <md-divider style="margin-bottom:5%"></md-divider>
           </div>
-      </form>
-    </div>
-  </md-card-content>
-  <md-card-actions>
-    <button md-button type="button" (click)="onAdd()">增加選項</button>
-    <button md-button>送出</button>
-  </md-card-actions>
+        </div>
+        <!--
+  -->
+      </md-card-content>
+      <md-card-actions>
+
+        <button md-button type="button" (click)="onAdd()">增加選項</button>
+        <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
+      </md-card-actions>
+    </form>
+    <pre>{{form.value|json}}</pre>
+  </div>
 </md-card>

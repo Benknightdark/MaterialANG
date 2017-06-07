@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
+
 import { MetaformService } from "app/services/metaform.service";
 import {Observable} from 'rxjs'
 import 'rxjs'
@@ -9,20 +11,39 @@ import 'rxjs'
 })
 export class FormMetaformComponent implements OnInit {
 MetaformDataArray:any=[]
-MetaformData
+MetaformData;
+imageData;//save uploaded image json
+ form: FormGroup;
 showform:boolean=false;
-  constructor(private service:MetaformService) { }
+  constructor(private service:MetaformService,private fb: FormBuilder) { }
 
   ngOnInit() {
   this.service.GetMetaformData().subscribe(res=>{
     this.MetaformData=res;
+
+ //   console.log(this.MetaformData)
+
+
+     this.form = this.fb.group({
+      title: ["", [Validators.required]],
+      formoptions:this.fb.array([
+        this.fb.control("formoption1")
+      ])
+
+    })
+
+
     this.MetaformDataArray.push(res);
-    console.log(this.MetaformData)
+ // const formoptionsarray=(this.form.controls.formoptions as FormArray)
+ // formoptionsarray.push(this.fb.control("formoption",res));
     this.showform=true;
   })
 }
 onAdd(){
 this.MetaformDataArray.push( this.MetaformData)
 }
-
+onSubmit()
+{
+  console.log(this.form)
+}
 }
