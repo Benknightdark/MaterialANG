@@ -39,7 +39,7 @@
                   <tr>
                     <td>
                       <md-input-container style="width:100%">
-                        <input mdInput placeholder="輸入選項名稱" type="text" formControlName="formoptionName" >
+                        <input mdInput placeholder="輸入選項名稱" type="text" formControlName="formoptionName">
                       </md-input-container>
                       <div *ngIf="form['controls']['title'].touched&& form['controls']['title'].errors">
                         <span>*需輸入值</span>
@@ -48,16 +48,22 @@
                   </tr>
                   <tr>
                     <td>
+                      <!-->選單類型</!-->
+                      <div formGroupName="formoptionSetting" md-line>
+                        <md-select placeholder="輸入選項類型" select-clear formControlName="InputType">
+                          <md-option [value]="null" selected="selected "></md-option>
+                          <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
+                            {{ mdt.name }}
+                          </md-option>
+                        </md-select>
 
-                        <div formGroupName="formoptionSetting">
-                               <md-select placeholder="輸入選項類型" select-clear  formControlName="InputType" >
-                        <md-option [value]="null" selected="selected "></md-option>
-                        <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
-                          {{ mdt.name }}
-                        </md-option>
-                      </md-select>
+                        <!--<md-radio-group formControlName="isRequiredInput">
+                          <span>是否一定要輸入值</span>
+                          <md-radio-button value="Y" >是</md-radio-button>
+                          <md-radio-button value="N" >否</md-radio-button>
+                        </md-radio-group>-->
 
-                        </div>
+                      </div>
 
 
                     </td>

@@ -15,6 +15,7 @@ export class FormMetaformComponent implements OnInit {
   imageData;//save uploaded image json
   form: FormGroup;
   showform: boolean = false;
+  showformSetting:boolean=false;
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -27,7 +28,8 @@ export class FormMetaformComponent implements OnInit {
             formoption: new FormControl(null, [Validators.required]),
             formoptionName: new FormControl(null, [Validators.required]),
             formoptionSetting: new FormGroup({
-              InputType: new FormControl(null, [Validators.required])
+              InputType: new FormControl("", [Validators.required]),
+              //isRequiredInput:new FormControl("",[Validators.required]),
             })
           })
 
@@ -57,7 +59,7 @@ export class FormMetaformComponent implements OnInit {
   }
   onformoptionsChange(i) {
     const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
-     const formotpionSetting=( (SelectedFormOption.controls.formoptionSetting as FormGroup).controls.InputType as FormControl)
+     const formotpionSetting= (SelectedFormOption.controls.formoptionSetting as FormGroup)
    console.log( formotpionSetting)
     if (SelectedFormOption.valid) {
       console.log(SelectedFormOption)
@@ -65,7 +67,8 @@ export class FormMetaformComponent implements OnInit {
 
       switch (SelectedFormOption.value) {
         case "input": {
-
+          formotpionSetting.addControl("isRequiredInput",new FormControl(""))
+          this.showformSetting=true;
           //statements;
           break;
         }
@@ -77,7 +80,10 @@ export class FormMetaformComponent implements OnInit {
       }
 
     }else{
-      formotpionSetting.setValue(null)
+    //  formotpionSetting=new FormGroup({
+    //           InputType: new FormControl("", [Validators.required]),
+    //           //isRequiredInput:new FormControl("",[Validators.required]),
+    //         })
     }
 
   }
