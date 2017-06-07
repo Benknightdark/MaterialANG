@@ -23,16 +23,48 @@
         <!--表單相關輸入選項-->
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
-            <md-select placeholder="表單選項" [formControlName]="i" select-clear  >
+            <md-select placeholder="表單選項" [formControlName]="i" select-clear>
               <md-option [value]="null" selected="selected"></md-option>
               <md-option *ngFor="let m of md" [value]="m[0].value">
                 {{ m[0].name }}
               </md-option>
             </md-select>
-                   {{ form['controls']['formoptions']['controls'][i].value|json }}
             <div *ngIf="form['controls']['formoptions']['controls'][i].touched&& form['controls']['formoptions']['controls'][i].errors">
-                <span>*需輸入值</span>
-              </div>
+              <span>*需輸入值</span>
+            </div>
+            <div *ngIf="form['controls']['formoptions']['controls'][i].value=='input'">
+              <table cellspacing="0" style="width:100%; margin-bottom:5%">
+                <tr>
+                  <td>
+                    <md-input-container style="width:100%">
+                      <input mdInput placeholder="輸入選項名稱" type="text">
+                    </md-input-container>
+                    <div *ngIf="form['controls']['title'].touched&& form['controls']['title'].errors">
+                      <span>*需輸入值</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+              <div >
+
+                <div *ngFor="let item of md[0][0].types">
+                       {{item.name|json}}
+                  </div>
+
+                </div>
+                     <!-- <md-select placeholder="輸入選項類型"  select-clear>
+                        <md-option [value]="null" selected="selected "></md-option>
+                        <md-option *ngFor="let mdt of md.types;let i=index" [value]="mdt.value">
+                          {{ mdt.name }}
+                        </md-option>
+                      </md-select>-->
+
+                  </td>
+                </tr>
+              </table>
+            </div>
             <md-divider style="margin-bottom:5%"></md-divider>
           </div>
         </div>
