@@ -41,7 +41,12 @@ export class FormMetaformComponent implements OnInit {
       confirm("表單選項沒有修改")
     } else {
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
-      formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required]));
+      formoptionsarray.push( new FormGroup({
+              formoption: new FormControl(null,[Validators.required])
+           }));
+      /*
+      this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required])
+       */
       this.MetaformDataArray.push(this.MetaformData)
     }
 
