@@ -23,13 +23,13 @@ export class FormMetaformComponent implements OnInit {
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
-           new FormGroup({
-              formoption: new FormControl(null,[Validators.required]),
-               formoptionName: new FormControl(null,[Validators.required]),
-               formoptionSetting:new FormGroup({
-                 InputType: new FormControl(null,[Validators.required])
-               })
-           })
+          new FormGroup({
+            formoption: new FormControl(null, [Validators.required]),
+            formoptionName: new FormControl(null, [Validators.required]),
+            formoptionSetting: new FormGroup({
+              InputType: new FormControl(null, [Validators.required])
+            })
+          })
 
         ])
 
@@ -45,9 +45,9 @@ export class FormMetaformComponent implements OnInit {
       confirm("表單選項沒有修改")
     } else {
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
-      formoptionsarray.push( new FormGroup({
-              formoption: new FormControl(null,[Validators.required])
-           }));
+      formoptionsarray.push(new FormGroup({
+        formoption: new FormControl(null, [Validators.required])
+      }));
       /*
       this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required])
        */
@@ -55,12 +55,29 @@ export class FormMetaformComponent implements OnInit {
     }
 
   }
-  onformoptionsChange(i){
-    const SelectedFormOption=this.form['controls']['formoptions']['controls'][i];
-    if(SelectedFormOption.valid){
-   console.log(SelectedFormOption)
-   console.log(SelectedFormOption.value)
+  onformoptionsChange(i) {
+    const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
+     const formotpionSetting=( (SelectedFormOption.controls.formoptionSetting as FormGroup).controls.InputType as FormControl)
+   console.log( formotpionSetting)
+    if (SelectedFormOption.valid) {
+      console.log(SelectedFormOption)
+      console.log(SelectedFormOption.value)
 
+      switch (SelectedFormOption.value) {
+        case "input": {
+
+          //statements;
+          break;
+        }
+
+        default: {
+          //statements;
+          break;
+        }
+      }
+
+    }else{
+      formotpionSetting.setValue(null)
     }
 
   }
