@@ -43,21 +43,17 @@
                       <span>*需輸入值</span>
                     </div>
                   </td>
-
                 </tr>
                 <tr>
                   <td>
-              <div >
-
-
-                </div>
-                      <md-select placeholder="輸入選項類型"  select-clear>
-                        <md-option [value]="null" selected="selected "></md-option>
-                        <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
-                          {{ mdt.name }}
-                        </md-option>
-                      </md-select>
-
+                    <div>
+                    </div>
+                    <md-select placeholder="輸入選項類型" select-clear>
+                      <md-option [value]="null" selected="selected "></md-option>
+                      <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
+                        {{ mdt.name }}
+                      </md-option>
+                    </md-select>
                   </td>
                 </tr>
               </table>

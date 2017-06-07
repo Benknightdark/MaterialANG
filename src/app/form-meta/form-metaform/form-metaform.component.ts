@@ -20,36 +20,26 @@ export class FormMetaformComponent implements OnInit {
   ngOnInit() {
     this.service.GetMetaformData().subscribe(res => {
       this.MetaformData = res;
-
-      //   console.log(this.MetaformData)
-
-
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
-          this.fb.control("formoption1",[Validators.required])
+          this.fb.control("formoption1", [Validators.required])
         ])
 
       })
-
-
       this.MetaformDataArray.push(res);
-     /* const formoptionsarray = (this.form.controls.formoptions as FormArray)
-      formoptionsarray.value[0]=null;*/
-      // const formoptionsarray=(this.form.controls.formoptions as FormArray)
-      // formoptionsarray.push(this.fb.control("formoption",res));
       this.showform = true;
     })
   }
   onAdd() {
     console.log(this.MetaformDataArray.length)
-    console.log(this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length-1].pristine)
-    if(!this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length-1].pristine){
-    const formoptionsarray = (this.form.controls.formoptions as FormArray)
-    formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1),[Validators.required]));
-    this.MetaformDataArray.push(this.MetaformData)
-    }else{
+    console.log(this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine)
+    if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
       confirm("表單選項沒有修改")
+    } else {
+      const formoptionsarray = (this.form.controls.formoptions as FormArray)
+      formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required]));
+      this.MetaformDataArray.push(this.MetaformData)
     }
 
   }
