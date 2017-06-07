@@ -16,7 +16,7 @@ export class FormMetaformComponent implements OnInit {
   form: FormGroup;
   showform: boolean = false;
   showformSetting: boolean = false;
-  formoptionSettingType = "";
+  formoptionSettingType = "";//目前所要新增的表單選項
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -56,24 +56,23 @@ export class FormMetaformComponent implements OnInit {
 
   }
   ReturFormOption(t) {
-    if (t = "") {
-      return null
-    } else {
+    if (t == ""||t==null) {
+      return {}
+    }
+    else if (t=="input"){
       return {
         InputType: new FormControl("", [Validators.required]),
         isRequiredInput: new FormControl("", [Validators.required]),
       }
     }
 
+
+
   }
   onformoptionsChange(i) {
     const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
 
-
     if (SelectedFormOption.valid) {
-      console.log(SelectedFormOption)
-      console.log(SelectedFormOption.value)
-
       switch (SelectedFormOption.value) {
         case "input": {
           this.formoptionSettingType="input"
