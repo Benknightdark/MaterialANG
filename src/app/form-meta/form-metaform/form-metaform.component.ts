@@ -55,6 +55,7 @@ export class FormMetaformComponent implements OnInit {
     }
 
   }
+ //回傳目前所要新增的表單選項json
   ReturFormOption(t) {
     if (t == "" || t == null) {
       return {}
@@ -66,6 +67,7 @@ export class FormMetaformComponent implements OnInit {
       }
     }
   }
+  //回傳目前所要新增的表單選項參數
   onformoptionsChange(i) {
     const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
 
