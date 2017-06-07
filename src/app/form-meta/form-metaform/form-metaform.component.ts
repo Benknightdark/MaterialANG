@@ -36,7 +36,7 @@ export class FormMetaformComponent implements OnInit {
             formoptionSetting: new FormGroup({
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
-              OptionsCount: new FormControl(1),
+
               Options: this.fb.array([
                 this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
               ])
