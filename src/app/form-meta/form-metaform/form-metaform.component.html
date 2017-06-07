@@ -6,7 +6,7 @@
   <div *ngIf="showform">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <md-card-content>
-
+        <!--表單主選項-->
         <table cellspacing="0" style="width:100%; margin-bottom:5%">
           <tr>
             <td>
@@ -20,15 +20,15 @@
             </td>
           </tr>
         </table>
+        <!--表單相關輸入選項-->
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
-
-            <md-select placeholder="表單選項" [formControlName]="i">
+            <md-select placeholder="表單選項" [formControlName]="i" select-clear  >
+              <md-option></md-option>
               <md-option *ngFor="let m of md" [value]="m[0].value">
                 {{ m[0].name }}
               </md-option>
             </md-select>
-
 
             <md-divider style="margin-bottom:5%"></md-divider>
           </div>
@@ -38,7 +38,7 @@
       </md-card-content>
       <md-card-actions>
 
-        <button md-button type="button" (click)="onAdd()">增加選項</button>
+        <button md-button type="button" (click)="onAdd()" [disabled]="form.invalid">增加選項</button>
         <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
       </md-card-actions>
     </form>

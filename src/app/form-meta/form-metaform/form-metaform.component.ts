@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 
 import { MetaformService } from "app/services/metaform.service";
-import {Observable} from 'rxjs'
+import { Observable } from 'rxjs'
 import 'rxjs'
 @Component({
   selector: 'app-form-metaform',
@@ -10,42 +10,43 @@ import 'rxjs'
   styleUrls: ['./form-metaform.component.css']
 })
 export class FormMetaformComponent implements OnInit {
-MetaformDataArray:any=[]
-MetaformData;
-imageData;//save uploaded image json
- form: FormGroup;
-showform:boolean=false;
-  constructor(private service:MetaformService,private fb: FormBuilder) { }
+  MetaformDataArray: any = []
+  MetaformData;
+  imageData;//save uploaded image json
+  form: FormGroup;
+  showform: boolean = false;
+  constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
-  this.service.GetMetaformData().subscribe(res=>{
-    this.MetaformData=res;
+    this.service.GetMetaformData().subscribe(res => {
+      this.MetaformData = res;
 
- //   console.log(this.MetaformData)
+      //   console.log(this.MetaformData)
 
 
-     this.form = this.fb.group({
-      title: ["", [Validators.required]],
-      formoptions:this.fb.array([
-        this.fb.control("formoption1")
-      ])
+      this.form = this.fb.group({
+        title: ["", [Validators.required]],
+        formoptions: this.fb.array([
+          this.fb.control("formoption1",[Validators.required])
+        ])
 
+      })
+
+
+      this.MetaformDataArray.push(res);
+     /* const formoptionsarray = (this.form.controls.formoptions as FormArray)
+      formoptionsarray.value[0]=null;*/
+      // const formoptionsarray=(this.form.controls.formoptions as FormArray)
+      // formoptionsarray.push(this.fb.control("formoption",res));
+      this.showform = true;
     })
-
-
-    this.MetaformDataArray.push(res);
- // const formoptionsarray=(this.form.controls.formoptions as FormArray)
- // formoptionsarray.push(this.fb.control("formoption",res));
-    this.showform=true;
-  })
-}
-onAdd(){
-   const formoptionsarray=(this.form.controls.formoptions as FormArray)
-  formoptionsarray.push(this.fb.control("formoption"+(formoptionsarray.length + 1)));
-this.MetaformDataArray.push( this.MetaformData)
-}
-onSubmit()
-{
-  console.log(this.form)
-}
+  }
+  onAdd() {
+    const formoptionsarray = (this.form.controls.formoptions as FormArray)
+    formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1)));
+    this.MetaformDataArray.push(this.MetaformData)
+  }
+  onSubmit() {
+    console.log(this.form)
+  }
 }
