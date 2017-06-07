@@ -235,59 +235,68 @@
     }]
   ],
   "FormMeta": [
-    [{
+      [{
 
-          "name": "輸入選項",
-          "value": "input",
-          "types":
+        "name": "輸入選項",
+        "value": "input",
+        "types":
 
-            [{
-                "name": "文字",
-                "value": "text"
-              },
-              {
-                "name": "電話號碼",
-                "value": "tel"
-              },
-              {
-                "name": "手機號碼",
-                "value": "mobile"
-              },
-              {
-                "name": "數字",
-                "value": "number"
-              },
-              {
-                "name": "電子信箱",
-                "value": "email"
-              },
-                  {
-                "name": "日期",
-                "value": "date"
-              },
-              {
-                "name":"日期時間",
+          [{
+              "name": "文字",
+              "value": "text"
+            },
+            {
+              "name": "電話號碼",
+              "value": "tel"
+            },
+            {
+              "name": "手機號碼",
+              "value": "mobile"
+            },
+            {
+              "name": "數字",
+              "value": "number"
+            },
+            {
+              "name": "電子信箱",
+              "value": "email"
+            },
+            {
+              "name": "日期",
+              "value": "date"
+            },
+            {
+              "name": "日期時間",
 
-                "value":"datetime-local"
-              }
+              "value": "datetime-local"
+            }
 
-            ],
-          "isMultiLine": [true, false]
+          ],
+        "isMultiLine": [true, false]
 
       }],
       [{
         "name": "單選選項",
         "value": "radio"
+
       }],
       [{
         "name": "複選選項",
         "value": "checkbox"
+
       }],
       [{
         "name": "下拉選項",
         "value": "select",
         "isMulti": [true, false]
+
+      }],
+
+      [{
+          "OptionsData": []
       }]
+
+
 
 
 

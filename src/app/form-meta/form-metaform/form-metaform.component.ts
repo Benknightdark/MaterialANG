@@ -16,13 +16,17 @@ export class FormMetaformComponent implements OnInit {
   form: FormGroup;
   showform: boolean = false;
   showformSetting: boolean = false;
-  OptionsArray=[""];
+  OptionsArray = [""];
   formoptionSettingType = "";//目前所要新增的表單選項
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.service.GetMetaformData().subscribe(res => {
       this.MetaformData = res;
+
+       this.MetaformDataArray.push(res);
+
+        console.log(this.MetaformDataArray[0][4][0].OptionsData)
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
@@ -32,8 +36,9 @@ export class FormMetaformComponent implements OnInit {
             formoptionSetting: new FormGroup({
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
-              Options:this.fb.array([
-                new FormControl("",[Validators.required])
+              OptionsCount:new FormControl(1),
+              Options: this.fb.array([
+                 this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
               ])
             })
           })
@@ -41,7 +46,7 @@ export class FormMetaformComponent implements OnInit {
         ])
 
       })
-      this.MetaformDataArray.push(res);
+
       this.showform = true;
     })
   }
@@ -49,36 +54,48 @@ export class FormMetaformComponent implements OnInit {
     if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
       confirm("表單選項沒有修改")
     } else {
-      this.OptionsArray=[];
+
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
       formoptionsarray.push(
-                new FormGroup({
-            formoption: new FormControl(null, [Validators.required]),
-            formoptionName: new FormControl(null, [Validators.required]),
-            formoptionSetting: new FormGroup({
-              InputType: new FormControl("", [Validators.required]),
-              isRequiredInput: new FormControl("", [Validators.required]),
-              Options:this.fb.array([
-                new FormControl("", [Validators.required])
-              ])
-            })
+        new FormGroup({
+          formoption: new FormControl(null, [Validators.required]),
+          formoptionName: new FormControl(null, [Validators.required]),
+          formoptionSetting: new FormGroup({
+            InputType: new FormControl("", [Validators.required]),
+            isRequiredInput: new FormControl("", [Validators.required]),
+            Options: this.fb.array([
+              new FormControl("", [Validators.required])
+            ])
           })
+        })
       );
       this.MetaformDataArray.push(this.MetaformData)
+
+
     }
   }
-onChange(i){
- const formoption= this.form['controls']['formoptions']['controls'][i]['controls']['formoption'].value
-if(formoption=='input'){
-(this. form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray).disable();
-}else{
-  console.log(this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType']);
-  this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable()
+  onChange(i) {
+    const formoption = this.form['controls']['formoptions']['controls'][i]['controls']['formoption'].value
+    if (formoption == 'input') {
+      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray).disable();
+    } else {
+      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable()
 
-}
+    }
 
 
-}
+  }
+  onAddOptionsData(a){
+ const addresses = this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+    addresses.push(this.fb.control(""))
+
+    // this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'].push(new FormControl("", [Validators.required]))
+
+
+
+   // this.OptionsArray.push("");
+
+  }
   onSubmit() {
     console.log(this.form)
   }
