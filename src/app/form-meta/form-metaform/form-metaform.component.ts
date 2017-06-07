@@ -28,7 +28,11 @@ export class FormMetaformComponent implements OnInit {
           new FormGroup({
             formoption: new FormControl(null, [Validators.required]),
             formoptionName: new FormControl(null, [Validators.required]),
-            formoptionSetting: new FormGroup(this.ReturFormOption(this.formoptionSettingType))
+            formoptionSetting: new FormGroup({
+              InputType: new FormControl("", [Validators.required]),
+              isRequiredInput: new FormControl("", [Validators.required]),
+              DataArray:new FormControl(""),
+            })
           })
 
         ])
@@ -39,8 +43,6 @@ export class FormMetaformComponent implements OnInit {
     })
   }
   onAdd() {
-    console.log(this.MetaformDataArray.length)
-    console.log(this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine)
     if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
       confirm("表單選項沒有修改")
     } else {
@@ -55,39 +57,8 @@ export class FormMetaformComponent implements OnInit {
     }
 
   }
- //回傳目前所要新增的表單選項json
-  ReturFormOption(t) {
-    if (t == "" || t == null) {
-      return {}
-    }
-    else if (t == "input") {
-      return {
-        InputType: new FormControl("", [Validators.required]),
-        isRequiredInput: new FormControl("", [Validators.required]),
-      }
-    }
-  }
-  //回傳目前所要新增的表單選項參數
-  onformoptionsChange(i) {
-    const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
 
-    if (SelectedFormOption.valid) {
-      switch (SelectedFormOption.value) {
-        case "input": {
-          this.formoptionSettingType = "input"
-          break;
-        }
-        default: {
-          //statements;
-          break;
-        }
-      }
 
-    } else {
-      this.formoptionSettingType=null;
-    }
-
-  }
   onSubmit() {
     console.log(this.form)
   }

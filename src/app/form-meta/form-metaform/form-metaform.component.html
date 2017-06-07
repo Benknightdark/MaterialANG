@@ -1,6 +1,7 @@
 <md-card>
   <md-card-header>
-    <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
+    <md-card-title style="font-size: 30px">建立報名表單 {{this.formoptionSettingType }}</md-card-title>
+
     <md-slide-toggle>開啟表單預覽</md-slide-toggle>
   </md-card-header>
   <div *ngIf="showform">
@@ -24,12 +25,13 @@
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
             <div [formGroupName]="i">
-              <md-select placeholder="表單選項" formControlName="formoption" (change)="onformoptionsChange(i)">
+              <md-select placeholder="表單選項" formControlName="formoption" >
                 <md-option [value]="null" selected="selected"></md-option>
                 <md-option *ngFor="let m of md" [value]="m[0].value">
                   {{ m[0].name }}
                 </md-option>
               </md-select>
+
               <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].touched
               && form['controls']['formoptions']['controls'][i]['controls']['formoption'].errors">
                 <span>*需輸入值</span>
