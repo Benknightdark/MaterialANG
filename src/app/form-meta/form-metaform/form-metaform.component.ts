@@ -16,6 +16,7 @@ export class FormMetaformComponent implements OnInit {
   form: FormGroup;
   showform: boolean = false;
   showformSetting: boolean = false;
+  OptionsArray=[""];
   formoptionSettingType = "";//目前所要新增的表單選項
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
@@ -31,7 +32,9 @@ export class FormMetaformComponent implements OnInit {
             formoptionSetting: new FormGroup({
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
-              DataArray:new FormControl(""),
+              Options:this.fb.array([
+                new FormControl("")
+              ])
             })
           })
 
@@ -46,19 +49,24 @@ export class FormMetaformComponent implements OnInit {
     if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
       confirm("表單選項沒有修改")
     } else {
+      this.OptionsArray=[];
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
-      formoptionsarray.push(new FormGroup({
-        formoption: new FormControl(null, [Validators.required])
-      }));
-      /*
-      this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required])
-       */
+      formoptionsarray.push(
+                new FormGroup({
+            formoption: new FormControl(null, [Validators.required]),
+            formoptionName: new FormControl(null, [Validators.required]),
+            formoptionSetting: new FormGroup({
+              InputType: new FormControl("", [Validators.required]),
+              isRequiredInput: new FormControl("", [Validators.required]),
+              Options:this.fb.array([
+                new FormControl("")
+              ])
+            })
+          })
+      );
       this.MetaformDataArray.push(this.MetaformData)
     }
-
   }
-
-
   onSubmit() {
     console.log(this.form)
   }

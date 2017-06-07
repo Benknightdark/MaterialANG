@@ -25,7 +25,7 @@
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
             <div [formGroupName]="i">
-              <md-select placeholder="表單選項" formControlName="formoption" >
+              <md-select placeholder="表單選項" formControlName="formoption">
                 <md-option [value]="null" selected="selected"></md-option>
                 <md-option *ngFor="let m of md" [value]="m[0].value">
                   {{ m[0].name }}
@@ -36,47 +36,57 @@
               && form['controls']['formoptions']['controls'][i]['controls']['formoption'].errors">
                 <span>*需輸入值</span>
               </div>
-              <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='input'">
-                <table cellspacing="0" style="width:100%; margin-bottom:5%">
-                  <tr>
-                    <td>
-                      <md-input-container style="width:100%">
-                        <input mdInput placeholder="輸入選項名稱" type="text" formControlName="formoptionName">
-                      </md-input-container>
-                      <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoptionName'].touched
+  <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value">
+              <table cellspacing="0" style="width:100%; margin-bottom:5%">
+                <tr>
+                  <td>
+                    <md-input-container style="width:100%">
+                      <input mdInput placeholder="輸入選項名稱" type="text" formControlName="formoptionName">
+                    </md-input-container>
+                    <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoptionName'].touched
                       && form['controls']['formoptions']['controls'][i]['controls']['formoptionName'].errors">
-                        <span>*需輸入值</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <!-->選單類型</!-->
+                      <span>*需輸入值</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
 
-                      <div formGroupName="formoptionSetting" md-line>
+                    <!-->選單類型</!-->
+                    <div formGroupName="formoptionSetting" md-line>
 
-                        <md-select placeholder="輸入選項類型" select-clear formControlName="InputType">
+                      <!--只出現在輸入選項-->
+                      <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='input'">
+                        <md-select placeholder="輸入選項類型" select-clear formControlName="InputType" style="width:100%">
                           <md-option [value]="null" selected="selected "></md-option>
                           <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
                             {{ mdt.name }}
                           </md-option>
                         </md-select>
-
-                        <md-radio-group formControlName="isRequiredInput">
-                          <span>是否一定要輸入值</span>
-                          <md-radio-button value="Y">是</md-radio-button>
-                          <md-radio-button value="N">否</md-radio-button>
-                        </md-radio-group>
-
                       </div>
 
+                      <md-radio-group formControlName="isRequiredInput">
+                        <span>是否一定要輸入值</span>
+                        <md-radio-button value="Y">是</md-radio-button>
+                        <md-radio-button value="N">否</md-radio-button>
+                      </md-radio-group>
+
+                      <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
+                        <div formArrayName="Options">
+                          <md-input-container style="width:100%" *ngFor="let o of OptionsArray; let i=index">
+                            <input mdInput placeholder="選項名稱" [formControlName]="i" type="text">
+                          </md-input-container>
+                        </div>
+                      </div>
+                    </div>
 
 
 
-                    </td>
-                  </tr>
-                </table>
-              </div>
+
+                  </td>
+                </tr>
+              </table>
+ </div>
               <md-divider style="margin-bottom:5%"></md-divider>
 
             </div>
