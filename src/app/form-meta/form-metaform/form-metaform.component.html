@@ -34,12 +34,12 @@
               && form['controls']['formoptions']['controls'][i]['controls']['formoption'].errors">
                 <span>*需輸入值</span>
               </div>
-              <div *ngIf="form['controls']['formoptions']['controls'][i].value=='input'">
+              <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='input'">
                 <table cellspacing="0" style="width:100%; margin-bottom:5%">
                   <tr>
                     <td>
                       <md-input-container style="width:100%">
-                        <input mdInput placeholder="輸入選項名稱" type="text">
+                        <input mdInput placeholder="輸入選項名稱" type="text" formControlName="formoptionName" >
                       </md-input-container>
                       <div *ngIf="form['controls']['title'].touched&& form['controls']['title'].errors">
                         <span>*需輸入值</span>
@@ -48,14 +48,18 @@
                   </tr>
                   <tr>
                     <td>
-                      <div>
-                      </div>
-                      <md-select placeholder="輸入選項類型" select-clear>
+
+                        <div formGroupName="formoptionSetting">
+                               <md-select placeholder="輸入選項類型" select-clear  formControlName="InputType" >
                         <md-option [value]="null" selected="selected "></md-option>
                         <md-option *ngFor="let mdt of md[0][0].types" [value]="mdt.value">
                           {{ mdt.name }}
                         </md-option>
                       </md-select>
+
+                        </div>
+
+
                     </td>
                   </tr>
                 </table>

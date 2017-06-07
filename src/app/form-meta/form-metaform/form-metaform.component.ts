@@ -24,7 +24,11 @@ export class FormMetaformComponent implements OnInit {
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
            new FormGroup({
-              formoption: new FormControl(null,[Validators.required])
+              formoption: new FormControl(null,[Validators.required]),
+               formoptionName: new FormControl(null,[Validators.required]),
+               formoptionSetting:new FormGroup({
+                 InputType: new FormControl(null,[Validators.required])
+               })
            })
 
         ])
@@ -52,9 +56,11 @@ export class FormMetaformComponent implements OnInit {
 
   }
   onformoptionsChange(i){
-    if(this.form['controls']['formoptions']['controls'][i].valid){
-   console.log(this.form['controls']['formoptions']['controls'][i])
-   console.log(this.form['controls']['formoptions']['controls'][i].value)
+    const SelectedFormOption=this.form['controls']['formoptions']['controls'][i];
+    if(SelectedFormOption.valid){
+   console.log(SelectedFormOption)
+   console.log(SelectedFormOption.value)
+
     }
 
   }
