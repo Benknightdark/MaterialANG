@@ -15,7 +15,8 @@ export class FormMetaformComponent implements OnInit {
   imageData;//save uploaded image json
   form: FormGroup;
   showform: boolean = false;
-  showformSetting:boolean=false;
+  showformSetting: boolean = false;
+  formoptionSettingType = "";
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -27,10 +28,7 @@ export class FormMetaformComponent implements OnInit {
           new FormGroup({
             formoption: new FormControl(null, [Validators.required]),
             formoptionName: new FormControl(null, [Validators.required]),
-            formoptionSetting: new FormGroup({
-              InputType: new FormControl("", [Validators.required]),
-              //isRequiredInput:new FormControl("",[Validators.required]),
-            })
+            formoptionSetting: new FormGroup(this.ReturFormOption(this.formoptionSettingType))
           })
 
         ])
@@ -57,33 +55,38 @@ export class FormMetaformComponent implements OnInit {
     }
 
   }
+  ReturFormOption(t) {
+    if (t = "") {
+      return null
+    } else {
+      return {
+        InputType: new FormControl("", [Validators.required]),
+        isRequiredInput: new FormControl("", [Validators.required]),
+      }
+    }
+
+  }
   onformoptionsChange(i) {
     const SelectedFormOption = (this.form['controls']['formoptions']['controls'][i] as FormGroup);
-     const formotpionSetting= (SelectedFormOption.controls.formoptionSetting as FormGroup)
-   console.log( formotpionSetting)
+
+
     if (SelectedFormOption.valid) {
       console.log(SelectedFormOption)
       console.log(SelectedFormOption.value)
 
       switch (SelectedFormOption.value) {
         case "input": {
-          formotpionSetting.addControl("isRequiredInput",new FormControl(""))
-          this.showformSetting=true;
-          //statements;
+          this.formoptionSettingType="input"
           break;
         }
-
         default: {
           //statements;
           break;
         }
       }
 
-    }else{
-    //  formotpionSetting=new FormGroup({
-    //           InputType: new FormControl("", [Validators.required]),
-    //           //isRequiredInput:new FormControl("",[Validators.required]),
-    //         })
+    } else {
+
     }
 
   }
