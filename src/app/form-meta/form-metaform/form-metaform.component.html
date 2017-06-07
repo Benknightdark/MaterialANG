@@ -95,12 +95,14 @@
 
                               <div class="button-row">
 
-                                <button md-raised-button (click)="onAddOptionsData(i)">
+                                <button md-raised-button (click)="onAddOptionsData(i,a)">
                                 <md-icon>add</md-icon>
                               </button>
 
 
-                                <button md-raised-button><md-icon>remove</md-icon></button>
+                                <button md-raised-button (click)="onRemoveOptionsData(i,a)">
+                                  <md-icon>remove</md-icon>
+                                  </button>
 
                               </div>
 

@@ -85,9 +85,20 @@ export class FormMetaformComponent implements OnInit {
 
 
   }
-  onAddOptionsData(a) {
-    const addresses = this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'] as FormArray
-    addresses.push(this.fb.control(""))
+  onAddOptionsData(i,a) {
+    const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+    AddOptionsData.push(this.fb.control(""))
+    console.log(i,a)
+
+
+  }
+
+    onRemoveOptionsData(i,a) {
+    const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+    AddOptionsData.removeAt(a)
+    console.log(i,a)
+
+
   }
   onSubmit() {
     console.log(this.form)
