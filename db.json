@@ -287,11 +287,8 @@
         "name": "下拉選項",
         "value": "select",
         "isMulti": [true, false]
-      }],
-      [{
-        "name": "日期選項",
-        "value": "DatePicker"
       }]
+
 
 
 

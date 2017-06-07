@@ -27,7 +27,10 @@
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
             <div [formGroupName]="i">
-              <md-select placeholder="表單選項" formControlName="formoption">
+              <md-select placeholder="表單選項" formControlName="formoption"
+              (change)="onChange(i)"
+              style="width:100%"
+              >
                 <md-option [value]="null" selected="selected"></md-option>
                 <md-option *ngFor="let m of md" [value]="m[0].value">
                   {{ m[0].name }}

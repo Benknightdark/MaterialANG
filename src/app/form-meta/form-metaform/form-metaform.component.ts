@@ -33,7 +33,7 @@ export class FormMetaformComponent implements OnInit {
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
               Options:this.fb.array([
-                new FormControl("")
+                new FormControl("",[Validators.required])
               ])
             })
           })
@@ -59,7 +59,7 @@ export class FormMetaformComponent implements OnInit {
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
               Options:this.fb.array([
-                new FormControl("")
+                new FormControl("", [Validators.required])
               ])
             })
           })
@@ -67,6 +67,18 @@ export class FormMetaformComponent implements OnInit {
       this.MetaformDataArray.push(this.MetaformData)
     }
   }
+onChange(i){
+ const formoption= this.form['controls']['formoptions']['controls'][i]['controls']['formoption'].value
+if(formoption=='input'){
+(this. form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray).disable();
+}else{
+  console.log(this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType']);
+  this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable()
+
+}
+
+
+}
   onSubmit() {
     console.log(this.form)
   }
