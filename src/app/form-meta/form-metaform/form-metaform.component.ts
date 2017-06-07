@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@angular/forms";
 
 import { MetaformService } from "app/services/metaform.service";
 import { Observable } from 'rxjs'
@@ -23,7 +23,10 @@ export class FormMetaformComponent implements OnInit {
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
-          this.fb.control("formoption1", [Validators.required])
+           new FormGroup({
+              formoption: new FormControl(null,[Validators.required])
+           })
+
         ])
 
       })
@@ -40,6 +43,13 @@ export class FormMetaformComponent implements OnInit {
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
       formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1), [Validators.required]));
       this.MetaformDataArray.push(this.MetaformData)
+    }
+
+  }
+  onformoptionsChange(i){
+    if(this.form['controls']['formoptions']['controls'][i].valid){
+   console.log(this.form['controls']['formoptions']['controls'][i])
+   console.log(this.form['controls']['formoptions']['controls'][i].value)
     }
 
   }
