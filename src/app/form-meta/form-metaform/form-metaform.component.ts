@@ -24,9 +24,9 @@ export class FormMetaformComponent implements OnInit {
     this.service.GetMetaformData().subscribe(res => {
       this.MetaformData = res;
 
-       this.MetaformDataArray.push(res);
+      this.MetaformDataArray.push(res);
 
-        console.log(this.MetaformDataArray[0][4][0].OptionsData)
+      console.log(this.MetaformDataArray[0][4][0].OptionsData)
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
@@ -36,9 +36,9 @@ export class FormMetaformComponent implements OnInit {
             formoptionSetting: new FormGroup({
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
-              OptionsCount:new FormControl(1),
+              OptionsCount: new FormControl(1),
               Options: this.fb.array([
-                 this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
+                this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
               ])
             })
           })
@@ -64,7 +64,7 @@ export class FormMetaformComponent implements OnInit {
             InputType: new FormControl("", [Validators.required]),
             isRequiredInput: new FormControl("", [Validators.required]),
             Options: this.fb.array([
-              new FormControl("", [Validators.required])
+              this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
             ])
           })
         })
@@ -85,16 +85,9 @@ export class FormMetaformComponent implements OnInit {
 
 
   }
-  onAddOptionsData(a){
- const addresses = this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+  onAddOptionsData(a) {
+    const addresses = this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'] as FormArray
     addresses.push(this.fb.control(""))
-
-    // this.form['controls']['formoptions']['controls'][a]['controls']['formoptionSetting']['controls']['Options'].push(new FormControl("", [Validators.required]))
-
-
-
-   // this.OptionsArray.push("");
-
   }
   onSubmit() {
     console.log(this.form)

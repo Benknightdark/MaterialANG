@@ -26,6 +26,7 @@
         <!--表單相關輸入選項-->
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
+            <md-divider style="margin-bottom:5%">表單相關選項</md-divider>
             <div [formGroupName]="i">
               <md-select placeholder="表單選項" formControlName="formoption" (change)="onChange(i)" style="width:100%">
                 <md-option [value]="null" selected="selected"></md-option>
@@ -85,12 +86,24 @@
                         <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
                           <div formArrayName="Options">
                             <div *ngFor="let o of this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']['controls']; let a=index">
-                              <button type="button" md-mini-fab (click)="onAddOptionsData(i)">
+                              <!-- <button type="button" md-mini-fab (click)="onAddOptionsData(i)" md-line>
                               <md-icon>add</md-icon>
-                            </button >
-                            <md-input-container style="width:100%" >
-                              <input mdInput placeholder="選項資料" [formControlName]="a" type="text" md-line>
-                            </md-input-container>
+                            </button >-->
+                              <md-input-container style="width:100%">
+                                <input mdInput placeholder="選項資料" [formControlName]="a" type="text" md-line>
+                              </md-input-container>
+
+                              <div class="button-row">
+
+                                <button md-raised-button (click)="onAddOptionsData(i)">
+                                <md-icon>add</md-icon>
+                              </button>
+
+
+                                <button md-raised-button><md-icon>remove</md-icon></button>
+
+                              </div>
+
                             </div>
                           </div>
                         </div>
@@ -116,10 +129,10 @@
       <md-card-actions>
 
         <button md-button type="button" (click)="onAdd()" [disabled]="form.invalid">增加選項</button>
-                              <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
-                              </md-card-actions>
+        <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
+      </md-card-actions>
     </form>
     <pre>{{form.value|json}}</pre>
     <pre>{{OptionsArray}}</pre>
-    </div>
+  </div>
 </md-card>
