@@ -42,9 +42,16 @@ export class FormMetaformComponent implements OnInit {
     })
   }
   onAdd() {
+    console.log(this.MetaformDataArray.length)
+    console.log(this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length-1].pristine)
+    if(!this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length-1].pristine){
     const formoptionsarray = (this.form.controls.formoptions as FormArray)
-    formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1)));
+    formoptionsarray.push(this.fb.control("formoption" + (formoptionsarray.length + 1),[Validators.required]));
     this.MetaformDataArray.push(this.MetaformData)
+    }else{
+      confirm("表單選項沒有修改")
+    }
+
   }
   onSubmit() {
     console.log(this.form)

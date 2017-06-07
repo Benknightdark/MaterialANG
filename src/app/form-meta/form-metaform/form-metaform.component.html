@@ -24,12 +24,15 @@
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
             <md-select placeholder="表單選項" [formControlName]="i" select-clear  >
-              <md-option></md-option>
+              <md-option [value]="null" selected="selected"></md-option>
               <md-option *ngFor="let m of md" [value]="m[0].value">
                 {{ m[0].name }}
               </md-option>
             </md-select>
-
+                   {{ form['controls']['formoptions']['controls'][i].value|json }}
+            <div *ngIf="form['controls']['formoptions']['controls'][i].touched&& form['controls']['formoptions']['controls'][i].errors">
+                <span>*需輸入值</span>
+              </div>
             <md-divider style="margin-bottom:5%"></md-divider>
           </div>
         </div>
