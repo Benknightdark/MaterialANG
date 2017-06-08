@@ -74,16 +74,44 @@
                               {{ mdt.name }}
                             </md-option>
                           </md-select>
+
+                          <md-list>
+                            <md-list-item>是否一定要輸入值
+                              <md-radio-group formControlName="isRequiredInput">
+                                <md-radio-button value="Y">是</md-radio-button>
+                                <md-radio-button value="N">否</md-radio-button>
+                              </md-radio-group>
+                            </md-list-item>
+
+                            <md-list-item>
+                              是否為多行輸入
+                              <md-radio-group formControlName="isMultiLine">
+                                <md-radio-button value="Y">是</md-radio-button>
+                                <md-radio-button value="N">否</md-radio-button>
+                              </md-radio-group>
+                            </md-list-item>
+
+                          </md-list>
+
+
+
+
+
                         </div>
 
-                        <md-radio-group formControlName="isRequiredInput">
-                          <span>是否一定要輸入值</span>
 
-                          <md-radio-button value="Y">是</md-radio-button>
-                          <md-radio-button value="N">否</md-radio-button>
-                        </md-radio-group>
 
                         <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
+
+
+                          <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='select'">
+                            <md-radio-group formControlName="isMultiSelect">
+                              <span>是否為多行輸入</span>
+                              <md-radio-button value="Y">是</md-radio-button>
+                              <md-radio-button value="N">否</md-radio-button>
+                            </md-radio-group>
+                          </div>
+
                           <div formArrayName="Options">
                             <div *ngFor="let o of this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']['controls']; let a=index">
                               <!-- <button type="button" md-mini-fab (click)="onAddOptionsData(i)" md-line>

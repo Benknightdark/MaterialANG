@@ -36,10 +36,11 @@ export class FormMetaformComponent implements OnInit {
             formoptionSetting: new FormGroup({
               InputType: new FormControl("", [Validators.required]),
               isRequiredInput: new FormControl("", [Validators.required]),
-
               Options: this.fb.array([
                 this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
-              ])
+              ]),
+              isMultiLine:new FormControl("", [Validators.required]),
+              isMultiSelect:new FormControl("", [Validators.required]),
             })
           })
 
@@ -85,18 +86,22 @@ export class FormMetaformComponent implements OnInit {
 
 
   }
-  onAddOptionsData(i,a) {
+  onAddOptionsData(i, a) {
     const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
     AddOptionsData.push(this.fb.control(""))
-    console.log(i,a)
+    console.log(i, a)
 
 
   }
 
-    onRemoveOptionsData(i,a) {
+  onRemoveOptionsData(i, a) {
+
     const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+    if(AddOptionsData.length>1){
     AddOptionsData.removeAt(a)
-    console.log(i,a)
+    console.log(i, a)
+    }
+
 
 
   }
