@@ -19,7 +19,7 @@ export class FormMetaformComponent implements OnInit {
   OptionsArray = [""];
   formoptionSettingType = "";//目前所要新增的表單選項
   PreviewForm;//預覽表單外觀
-  ShowPreviewForm: boolean
+  ShowPreviewForm
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {

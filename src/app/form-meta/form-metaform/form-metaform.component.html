@@ -150,33 +150,51 @@
 <md-card *ngIf="this.ShowPreviewForm">
   <md-card-header>
     <md-card-title [innerHTML]="form.value.title" style="white-space: pre-wrap"></md-card-title>
-    <md-card-subtitle>表單預覽</md-card-subtitle>
+    <md-card-subtitle >表單預覽</md-card-subtitle>
   </md-card-header>
   <md-card-content>
     <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
     <form>
+
       <div *ngFor="let item of form.value.formoptions">
         <div *ngIf="item.formoption!=null && item.formoptionName!=null">
-          <div *ngIf="item.formoption==='input'">
 
+          <div *ngIf="item.formoption==='input'">
             <md-input-container style="width:100%">
               <input mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='true'">
             </md-input-container>
-
           </div>
 
           <div *ngIf="item.formoption==='textarea'">
-
             <md-input-container style="width:100%">
               <textarea mdInput [placeholder]="item.formoptionName" type="text" [required]="item.formoptionSetting.isRequiredInput==='true'">
-
               </textarea>
             </md-input-container>
+          </div>
+
+          <div *ngIf="item.formoption==='select'">
+            {{item.formoptionSetting.MultiSelect}}
+            <div *ngIf="item.formoptionSetting.isMultiSelect=='true'">
+              <md-select style="width:100%" [placeholder]="item.formoptionName" multiple="">
+                <md-option *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">
+                  {{ mdt }}
+                </md-option>
+              </md-select>
+            </div>
+            <div *ngIf="item.formoptionSetting.isMultiSelect!='true'">
+              <md-select style="width:100%" [placeholder]="item.formoptionName">
+                <md-option *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">
+                  {{ mdt }}
+                </md-option>
+              </md-select>
+            </div>
+
 
           </div>
           {{item|json}}
         </div>
       </div>
+
     </form>
 
   </md-card-content>
