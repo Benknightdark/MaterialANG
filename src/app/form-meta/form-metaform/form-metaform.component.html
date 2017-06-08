@@ -22,6 +22,20 @@
                 </md-list>
               </div>
             </td>
+
+          </tr>
+          <tr>
+            <td>
+              <md-input-container style="width:100%">
+                <textarea mdInput placeholder="表單內容" formControlName="content" >
+                </textarea>
+              </md-input-container>
+              <div *ngIf="form['controls']['content'].touched&& form['controls']['content'].errors">
+                <md-list>
+                  <md-list-item>*需輸入值</md-list-item>
+                </md-list>
+              </div>
+            </td>
           </tr>
         </table>
         <!--表單相關輸入選項-->
@@ -173,10 +187,13 @@
 <md-divider style="margin-bottom:5%"></md-divider>
 <md-card *ngIf="this.ShowPreviewForm">
   <md-card-header>
-    <md-card-title>{{form.value.title}}(表單預覽)</md-card-title>
+    <md-card-title [innerHTML]="form.value.title" style="white-space: pre-wrap"></md-card-title>
+    <md-card-subtitle>表單預覽</md-card-subtitle>
   </md-card-header>
   <md-card-content>
+   <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
+   {{form.value.content}}
     <form></form>
-    {{this.form.value|json}}
+
   </md-card-content>
 </md-card>
