@@ -72,7 +72,6 @@ export class FormMetaformComponent implements OnInit {
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType']).enable();
       this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].enable();
-
     }
     else {
       if (formoption != 'select') {

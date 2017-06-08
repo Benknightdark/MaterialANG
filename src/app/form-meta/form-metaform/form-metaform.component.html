@@ -99,13 +99,7 @@
                               </md-radio-group>
                             </md-list-item>
                           </md-list>
-
-
-
-
-
                         </div>
-
                         <md-list>
                           <md-list-item>是否一定要輸入值
                             <md-radio-group formControlName="isRequiredInput">
@@ -115,11 +109,10 @@
                           </md-list-item>
                         </md-list>
                         <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
-
                           <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='select'">
                             <md-list>
                               <md-list-item>
-                                是否為多行輸入
+                                是否為複選
                                 <md-radio-group formControlName="isMultiSelect">
                                   <md-radio-button value=true>是</md-radio-button>
                                   <md-radio-button value=false>否</md-radio-button>
@@ -129,9 +122,6 @@
                           </div>
                           <div formArrayName="Options">
                             <div *ngFor="let o of this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']['controls']; let a=index">
-                              <!-- <button type="button" md-mini-fab (click)="onAddOptionsData(i)" md-line>
-                              <md-icon>add</md-icon>
-                            </button >-->
                               <md-input-container style="width:100%">
                                 <input mdInput placeholder="選項資料" [formControlName]="a" type="text" md-line>
                               </md-input-container>
@@ -147,26 +137,16 @@
                           </div>
                         </div>
                       </div>
-
-
-
-
                     </td>
                   </tr>
                 </table>
               </div>
               <md-divider style="margin-bottom:5%"></md-divider>
-
             </div>
-
-
-
           </div>
         </div>
-
       </md-card-content>
       <md-card-actions>
-
         <button md-button type="button" (click)="onAdd()" [disabled]="form.invalid">增加選項</button>
         <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
       </md-card-actions>
@@ -182,30 +162,35 @@
   </md-card-header>
   <md-card-content>
     <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
-
     <form>
-
       <div *ngFor="let item of form.value.formoptions">
         <div *ngIf="item.formoption!=null && item.formoptionName!=null">
           <div *ngIf="item.formoption==='input'">
             <div *ngIf="item.formoptionSetting.isMultiLine=='false'">
               <md-input-container style="width:100%">
-
                 <input mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='true'">
-
-
               </md-input-container>
             </div>
-
             <div *ngIf="item.formoptionSetting.isMultiLine==='true'
-
             ">
-              <md-input-container style="width:100%">
-                <textarea mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='false'">
+              <div *ngIf="item.formoptionSetting.InputType !='date'&&
+              item.formoptionSetting.InputType !='datetime-local'">
+                <md-input-container style="width:100%">
+                  <textarea mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='false'">
                </textarea>
+                </md-input-container>
+              </div>
+  <div *ngIf="item.formoptionSetting.InputType =='date'">
+                <md-input-container style="width:100%">
+                 <input mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='true'">
+                </md-input-container>
+              </div>
 
-
-              </md-input-container>
+                <div *ngIf="item.formoptionSetting.InputType =='datetime-local'">
+                <md-input-container style="width:100%">
+                 <input mdInput [placeholder]="item.formoptionName" [type]="item.formoptionSetting.InputType" [required]="item.formoptionSetting.isRequiredInput==='true'">
+                </md-input-container>
+              </div>
             </div>
           </div>
           {{item|json}}
