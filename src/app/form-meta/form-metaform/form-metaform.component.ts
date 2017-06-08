@@ -39,8 +39,8 @@ export class FormMetaformComponent implements OnInit {
               Options: this.fb.array([
                 this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
               ]),
-              isMultiLine:new FormControl("", [Validators.required]),
-              isMultiSelect:new FormControl("", [Validators.required]),
+              isMultiLine: new FormControl("", [Validators.required]),
+              isMultiSelect: new FormControl("", [Validators.required]),
             })
           })
 
@@ -66,10 +66,13 @@ export class FormMetaformComponent implements OnInit {
             isRequiredInput: new FormControl("", [Validators.required]),
             Options: this.fb.array([
               this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
-            ])
+            ]),
+            isMultiLine: new FormControl("", [Validators.required]),
+              isMultiSelect: new FormControl("", [Validators.required]),
           })
         })
       );
+
       this.MetaformDataArray.push(this.MetaformData)
 
 
@@ -78,9 +81,16 @@ export class FormMetaformComponent implements OnInit {
   onChange(i) {
     const formoption = this.form['controls']['formoptions']['controls'][i]['controls']['formoption'].value
     if (formoption == 'input') {
-      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray).disable();
-    } else {
-      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable()
+      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
+      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+    }
+    else {
+      if (formoption != 'select') {
+        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+      }
+
+      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
+      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].disable();
 
     }
 
@@ -97,9 +107,9 @@ export class FormMetaformComponent implements OnInit {
   onRemoveOptionsData(i, a) {
 
     const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
-    if(AddOptionsData.length>1){
-    AddOptionsData.removeAt(a)
-    console.log(i, a)
+    if (AddOptionsData.length > 1) {
+      AddOptionsData.removeAt(a)
+      console.log(i, a)
     }
 
 

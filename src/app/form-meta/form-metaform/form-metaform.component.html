@@ -76,12 +76,7 @@
                           </md-select>
 
                           <md-list>
-                            <md-list-item>是否一定要輸入值
-                              <md-radio-group formControlName="isRequiredInput">
-                                <md-radio-button value="Y">是</md-radio-button>
-                                <md-radio-button value="N">否</md-radio-button>
-                              </md-radio-group>
-                            </md-list-item>
+
 
                             <md-list-item>
                               是否為多行輸入
@@ -100,7 +95,12 @@
                         </div>
 
 
-
+     <md-list-item>是否一定要輸入值
+                              <md-radio-group formControlName="isRequiredInput">
+                                <md-radio-button value="Y">是</md-radio-button>
+                                <md-radio-button value="N">否</md-radio-button>
+                              </md-radio-group>
+                            </md-list-item>
                         <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
 
 
