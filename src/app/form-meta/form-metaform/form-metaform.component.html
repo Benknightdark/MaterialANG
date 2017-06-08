@@ -91,7 +91,7 @@
                           </md-select>
                         </div>
                         <md-list>
-                          <md-list-item>是否一定要輸入值
+                          <md-list-item>是否一定要輸入值：
                             <md-radio-group formControlName="isRequiredInput">
                               <md-radio-button value=true>是</md-radio-button>
                               <md-radio-button value=false>否</md-radio-button>
@@ -102,7 +102,7 @@
                           <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value=='select'">
                             <md-list>
                               <md-list-item>
-                                是否為複選
+                                是否為複選：
                                 <md-radio-group formControlName="isMultiSelect">
                                   <md-radio-button value=true>是</md-radio-button>
                                   <md-radio-button value=false>否</md-radio-button>
@@ -150,7 +150,7 @@
 <md-card *ngIf="this.ShowPreviewForm">
   <md-card-header>
     <md-card-title [innerHTML]="form.value.title" style="white-space: pre-wrap"></md-card-title>
-    <md-card-subtitle >表單預覽</md-card-subtitle>
+    <md-card-subtitle>表單預覽</md-card-subtitle>
   </md-card-header>
   <md-card-content>
     <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
@@ -188,8 +188,18 @@
                 </md-option>
               </md-select>
             </div>
+          </div>
 
+          <div *ngIf="item.formoption==='radio'">
+            <md-list>
+              <md-list-item>
+                {{item.formoptionName}}：
+                <md-radio-group>
+                  <md-radio-button  *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-radio-button>
 
+                </md-radio-group>
+              </md-list-item>
+            </md-list>
           </div>
           {{item|json}}
         </div>
