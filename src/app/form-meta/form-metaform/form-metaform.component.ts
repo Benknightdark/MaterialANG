@@ -83,12 +83,17 @@ export class FormMetaformComponent implements OnInit {
     if (formoption == 'input') {
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType']).enable();
+        this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].enable();
+
     }
     else {
       if (formoption != 'select') {
         (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+      }else{
+           (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).enable();
       }
-
+      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).enable();
       this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
       this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].disable();
 
