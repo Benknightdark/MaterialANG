@@ -18,6 +18,8 @@ export class FormMetaformComponent implements OnInit {
   showformSetting: boolean = false;
   OptionsArray = [""];
   formoptionSettingType = "";//目前所要新增的表單選項
+  PreviewForm;//預覽表單外觀
+  ShowPreviewForm:boolean
   constructor(private service: MetaformService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -49,6 +51,7 @@ export class FormMetaformComponent implements OnInit {
       })
 
       this.showform = true;
+
     })
   }
   onAdd() {
@@ -119,6 +122,10 @@ export class FormMetaformComponent implements OnInit {
 
 
 
+  }
+  isPreviewForm(e){
+this.ShowPreviewForm=e.checked
+console.log(this.ShowPreviewForm)
   }
   onSubmit() {
     console.log(this.form)

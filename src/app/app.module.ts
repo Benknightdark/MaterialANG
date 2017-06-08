@@ -19,13 +19,15 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from './home/home.component';
 import { FormMetaModule } from "app/form-meta/form-meta.module";
 import { RouterModule } from "@angular/router";
+import { FormdataComponent } from './formdata/formdata.component';
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
     SidenavComponent,
     NestednavComponent,
-    HomeComponent
+    HomeComponent,
+    FormdataComponent
   ],
   imports: [
     BrowserModule,

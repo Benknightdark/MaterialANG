@@ -1,8 +1,9 @@
 <md-card>
   <md-card-header>
-    <md-card-title style="font-size: 30px">建立報名表單 {{this.formoptionSettingType }}</md-card-title>
+    <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
 
-    <md-slide-toggle>開啟表單預覽</md-slide-toggle>
+    <md-slide-toggle (change)="isPreviewForm($event)">開啟表單預覽</md-slide-toggle>
+
   </md-card-header>
   <div *ngIf="showform">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -95,12 +96,12 @@
                         </div>
 
 
-     <md-list-item>是否一定要輸入值
-                              <md-radio-group formControlName="isRequiredInput">
-                                <md-radio-button value="Y">是</md-radio-button>
-                                <md-radio-button value="N">否</md-radio-button>
-                              </md-radio-group>
-                            </md-list-item>
+                        <md-list-item>是否一定要輸入值
+                          <md-radio-group formControlName="isRequiredInput">
+                            <md-radio-button value="Y">是</md-radio-button>
+                            <md-radio-button value="N">否</md-radio-button>
+                          </md-radio-group>
+                        </md-list-item>
                         <div *ngIf="form['controls']['formoptions']['controls'][i]['controls']['formoption'].value!='input'">
 
 
@@ -165,4 +166,14 @@
     <pre>{{form.value|json}}</pre>
     <pre>{{OptionsArray}}</pre>
   </div>
+</md-card>
+         <md-divider style="margin-bottom:5%"></md-divider>
+<md-card *ngIf="this.ShowPreviewForm">
+  <md-card-header>
+    <md-card-title>{{form.value.title}}(表單預覽)</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form></form>
+    {{this.form.value|json}}
+  </md-card-content>
 </md-card>
