@@ -27,7 +27,7 @@
           <tr>
             <td>
               <md-input-container style="width:100%">
-                <textarea mdInput placeholder="表單內容" formControlName="content" >
+                <textarea mdInput placeholder="表單內容" formControlName="content">
                 </textarea>
               </md-input-container>
               <div *ngIf="form['controls']['content'].touched&& form['controls']['content'].errors">
@@ -180,8 +180,7 @@
         <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
       </md-card-actions>
     </form>
-    <pre>{{form.value|json}}</pre>
-    <pre>{{OptionsArray}}</pre>
+    <!-- <pre>{{form.value|json}}</pre>-->
   </div>
 </md-card>
 <md-divider style="margin-bottom:5%"></md-divider>
@@ -191,9 +190,28 @@
     <md-card-subtitle>表單預覽</md-card-subtitle>
   </md-card-header>
   <md-card-content>
-   <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
-   {{form.value.content}}
-    <form></form>
+    <div [innerHTML]="form.value.content" style="white-space: pre-wrap"></div>
+
+    <form>
+
+      <div *ngFor="let item of form.value.formoptions">
+        <div *ngIf="item.formoption!=null && item.formoptionName!=null">
+          <div *ngIf="item.formoption=='input'">
+            <md-input-container style="width:100%">
+              <div *ngIf="item.isMultiLine=='Y'">
+                <input mdInput [placeholder]="item.formoptionName" [type]="item.InputType" [required]="item.isRequiredInput=='Y'">
+              </div>
+              <div *ngIf="item.isMultiLine=='N'">
+                <textarea mdInput [placeholder]="item.formoptionName" [type]="item.InputType" [required]="item.isRequiredInput=='Y'">
+               </textarea>
+              </div>
+
+            </md-input-container>
+          </div>
+          {{item|json}}
+        </div>
+      </div>
+    </form>
 
   </md-card-content>
 </md-card>
