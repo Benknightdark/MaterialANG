@@ -32,19 +32,7 @@ export class FormMetaformComponent implements OnInit {
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         formoptions: this.fb.array([
-          new FormGroup({
-            formoption: new FormControl(null, [Validators.required]),
-            formoptionName: new FormControl(null, [Validators.required]),
-            formoptionSetting: new FormGroup({
-              InputType: new FormControl("", [Validators.required]),
-              isRequiredInput: new FormControl("", [Validators.required]),
-              Options: this.fb.array([
-                this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
-              ]),
-              isMultiLine: new FormControl("", [Validators.required]),
-              isMultiSelect: new FormControl("", [Validators.required]),
-            })
-          })
+        this.FormOptionsGroup()
 
         ])
 
@@ -61,7 +49,16 @@ export class FormMetaformComponent implements OnInit {
 
       const formoptionsarray = (this.form.controls.formoptions as FormArray)
       formoptionsarray.push(
-        new FormGroup({
+        this.FormOptionsGroup()
+      );
+
+      this.MetaformDataArray.push(this.MetaformData)
+
+
+    }
+  }
+  FormOptionsGroup(){
+    return new FormGroup({
           formoption: new FormControl(null, [Validators.required]),
           formoptionName: new FormControl(null, [Validators.required]),
           formoptionSetting: new FormGroup({
@@ -74,12 +71,6 @@ export class FormMetaformComponent implements OnInit {
               isMultiSelect: new FormControl("", [Validators.required]),
           })
         })
-      );
-
-      this.MetaformDataArray.push(this.MetaformData)
-
-
-    }
   }
   onChange(i) {
     const formoption = this.form['controls']['formoptions']['controls'][i]['controls']['formoption'].value
