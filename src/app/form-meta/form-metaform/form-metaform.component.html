@@ -201,6 +201,18 @@
               </md-list-item>
             </md-list>
           </div>
+
+                  <div *ngIf="item.formoption==='checkbox'">
+            <md-list>
+              <md-list-item>
+                {{item.formoptionName}}：
+                <md-radio-group>
+                  <md-checkbox  *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-checkbox>
+
+                </md-radio-group>
+              </md-list-item>
+            </md-list>
+          </div>
           {{item|json}}
         </div>
       </div>
