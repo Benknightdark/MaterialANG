@@ -291,6 +291,11 @@
         "isMulti": [true, false]
 
       }],
+      [{
+        "name": "多行輸入選項",
+        "value": "textarea"
+
+      }],
 
       [{
           "OptionsData": []

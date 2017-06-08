@@ -41,7 +41,7 @@ export class FormMetaformComponent implements OnInit {
     if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
       confirm("表單選項沒有修改")
     } else {
-     const formoptionsarray = (this.form.controls.formoptions as FormArray)
+      const formoptionsarray = (this.form.controls.formoptions as FormArray)
       formoptionsarray.push(
         this.FormOptionsGroup()
       );
@@ -58,9 +58,8 @@ export class FormMetaformComponent implements OnInit {
         InputType: new FormControl("", [Validators.required]),
         isRequiredInput: new FormControl("", [Validators.required]),
         Options: this.fb.array([
-          this.MetaformDataArray[0][4][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
+          this.MetaformDataArray[0][5][0].OptionsData.map(o => (this.fb.control(o, [Validators.required])))
         ]),
-        isMultiLine: new FormControl("", [Validators.required]),
         isMultiSelect: new FormControl("", [Validators.required]),
       })
     })
@@ -71,17 +70,24 @@ export class FormMetaformComponent implements OnInit {
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
       (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType']).enable();
-      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].enable();
     }
     else {
-      if (formoption != 'select') {
-        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+
+      if (formoption == 'textarea') {
+          (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+           (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
+        this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
       } else {
-        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).enable();
+        if (formoption != 'select') {
+          (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+        } else {
+          (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).enable();
+        }
+        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).enable();
+        this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
       }
-      (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).enable();
-      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
-      this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiLine'].disable();
+
+
 
     }
 
