@@ -5,6 +5,7 @@ import { MetaformService } from "app/services/metaform.service";
 import { Observable } from 'rxjs'
 import 'rxjs'
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { UUID } from 'angular2-uuid';
 @Component({
   selector: 'app-form-metaform',
   templateUrl: './form-metaform.component.html',
@@ -146,6 +147,9 @@ export class FormMetaformComponent implements OnInit {
     console.log(this.ShowPreviewForm)
   }
   onSubmit() {
-    console.log(this.form)
+  const temp=   [];
+  temp.push({id:UUID.UUID(),data: (this.form.value)})
+
+    console.log(temp)
   }
 }
