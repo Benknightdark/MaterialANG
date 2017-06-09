@@ -41,7 +41,15 @@
         <!--表單相關輸入選項-->
         <div formArrayName="formoptions">
           <div *ngFor="let md of MetaformDataArray;let i=index">
-            <md-divider style="margin-bottom:5%">表單相關選項</md-divider>
+            <md-divider style="margin-bottom:5%">
+
+              <div class="button-row">
+                表單相關選項
+                <button md-mini-fab type="button" (click)="onAdd()" [disabled]="form.invalid" style="background:yellow"><md-icon style="color:black">add</md-icon></button>
+                <button md-mini-fab type="button"><md-icon>remove</md-icon></button>
+              </div>
+
+            </md-divider>
             <div [formGroupName]="i">
               <md-select placeholder="表單選項" formControlName="formoption" (change)="onChange(i)" style="width:100%">
                 <md-option [value]="null" selected="selected"></md-option>
@@ -117,10 +125,10 @@
                                   <input mdInput placeholder="選項資料" [formControlName]="a" type="text" md-line>
                                 </md-input-container>
                                 <div class="button-row">
-                                  <button md-raised-button  type="button" (click)="onAddOptionsData(i,a)">
+                                  <button md-raised-button type="button" (click)="onAddOptionsData(i,a)">
                                 <md-icon>add</md-icon>
                               </button>
-                                  <button md-raised-button  type="button" (click)="onRemoveOptionsData(i,a)">
+                                  <button md-raised-button type="button" (click)="onRemoveOptionsData(i,a)">
                                   <md-icon>remove</md-icon>
                                   </button>
                                 </div>
@@ -139,7 +147,7 @@
         </div>
       </md-card-content>
       <md-card-actions>
-        <button md-button type="button" (click)="onAdd()" [disabled]="form.invalid">增加選項</button>
+        <!--<button md-button type="button" (click)="onAdd()" [disabled]="form.invalid">增加選項</button>-->
         <button md-button type="submit" style="    background: yellow;" [disabled]="form.invalid">送出</button>
       </md-card-actions>
     </form>
@@ -195,19 +203,19 @@
               <md-list-item>
                 {{item.formoptionName}}：
                 <md-radio-group>
-                  <md-radio-button  *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-radio-button>
+                  <md-radio-button *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-radio-button>
 
                 </md-radio-group>
               </md-list-item>
             </md-list>
           </div>
 
-                  <div *ngIf="item.formoption==='checkbox'">
+          <div *ngIf="item.formoption==='checkbox'">
             <md-list>
               <md-list-item>
                 {{item.formoptionName}}：
                 <md-radio-group>
-                  <md-checkbox  *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-checkbox>
+                  <md-checkbox *ngFor="let mdt of item.formoptionSetting.Options" [value]="mdt">{{mdt}}</md-checkbox>
 
                 </md-radio-group>
               </md-list-item>
