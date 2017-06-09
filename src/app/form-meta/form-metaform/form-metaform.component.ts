@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@ang
 import { MetaformService } from "app/services/metaform.service";
 import { Observable } from 'rxjs'
 import 'rxjs'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 @Component({
   selector: 'app-form-metaform',
   templateUrl: './form-metaform.component.html',
@@ -20,9 +21,15 @@ export class FormMetaformComponent implements OnInit {
   formoptionSettingType = "";//目前所要新增的表單選項
   PreviewForm;//預覽表單外觀
   ShowPreviewForm
-  constructor(private service: MetaformService, private fb: FormBuilder) { }
+  items;
+  constructor(private service: MetaformService, private fb: FormBuilder,private db: AngularFireDatabase) {
+
+  }
 
   ngOnInit() {
+  this.items = this.db.list('/item').subscribe(r=>console.log(r));
+
+
     this.service.GetMetaformData().subscribe(res => {
       this.MetaformData = res;
       this.MetaformDataArray.push(res);

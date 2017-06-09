@@ -13,6 +13,7 @@ import {
 import { MetaformService } from "../services/metaform.service";
 import { HttpModule } from "@angular/http";
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FirebaseapiModule } from '../firebaseapi/firebaseapi.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FirebaseapiModule
   ],
   declarations: [FormMetaformComponent],
   exports:[FormMetaformComponent],

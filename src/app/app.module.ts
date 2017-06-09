@@ -1,3 +1,4 @@
+import {AngularFireModule} from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 import { FormMetaModule } from "app/form-meta/form-meta.module";
 import { RouterModule } from "@angular/router";
 import { FormdataComponent } from './formdata/formdata.component';
+import { FirebaseapiModule } from './firebaseapi/firebaseapi.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,17 +40,9 @@ import { FormdataComponent } from './formdata/formdata.component';
 
       MaterialModule,
       FormMetaModule,
+ AppRoutingModule,
+FirebaseapiModule
 
-      //RouterModule,
- AppRoutingModule
-    // MdButtonModule,
-    // MdCheckboxModule,
-    // MdTabsModule,
-    // MdSidenavModule,
-    // MdListModule,
-    // MdCardModule,
-    // MdToolbarModule,
-    // MdIconModule
 
   ],
   providers: [],
