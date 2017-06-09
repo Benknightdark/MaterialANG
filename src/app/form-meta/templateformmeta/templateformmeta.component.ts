@@ -12,13 +12,7 @@ MetaFormDes={
   content:"",
   imageinf:[],
   FormOptions:[
-    {
-        FormOptionType: "",
-        FormOptionName: "",
-        InputOption:"",
-        Required:"",
-        isMulti:"",
-      }
+   this.ReturnFormOptions()
   ]
 };
 MetaformData;
@@ -35,26 +29,23 @@ selectedValue="";
       this.showform = true;
     })
   }
+  ReturnFormOptions(){
+    return {
+        FormOptionType: "",
+        FormOptionName: "",
+        InputOption:"",
+        Required:"",
+        isMulti:"",
+      }
+  }
   onAddFormOptions(i){
 
     if( this.MetaFormDes.FormOptions.length==1){
    this.MetaformDataArray.push(this.MetaformData)
-    this.MetaFormDes.FormOptions.push({
-        FormOptionType: "",
-        FormOptionName: "",
-        InputOption:"",
-        Required:"",
-        isMulti:"",
-      })
+    this.MetaFormDes.FormOptions.push(this.ReturnFormOptions())
     }else{
    this.MetaformDataArray.splice(i,0,this.MetaformData)
-    this.MetaFormDes.FormOptions.splice(i,0 ,{
-        FormOptionType: "",
-        FormOptionName: "",
-        InputOption:"",
-        Required:"",
-        isMulti:"",
-      })
+    this.MetaFormDes.FormOptions.splice(i,0 ,this.ReturnFormOptions())
     }
 
   }
