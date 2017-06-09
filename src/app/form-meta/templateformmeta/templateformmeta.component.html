@@ -35,7 +35,7 @@
 
           </md-divider>
 
-          <md-select placeholder="表單選項" style="width:100%" [(ngModel)]="MetaFormDes.FormOptions[i].selectedValue" [name]="'formoptions'+i">
+          <md-select placeholder="表單選項" style="width:100%" [(ngModel)]="MetaFormDes.FormOptions[i].FormOptionType" [name]="'formoptions'+i">
             <md-option [value]="null" selected="selected"></md-option>
             <md-option *ngFor="let m of item " [value]="m[0]?.value">
               {{ m[0]?.name }} {{m[0]?.value}}

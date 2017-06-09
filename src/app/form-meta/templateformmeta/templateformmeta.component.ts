@@ -13,7 +13,11 @@ MetaFormDes={
   imageinf:[],
   FormOptions:[
     {
-        selectedValue: ""
+        FormOptionType: "",
+        FormOptionName: "",
+        InputOption:"",
+        Required:"",
+        isMulti:"",
       }
   ]
 };
@@ -36,12 +40,20 @@ selectedValue="";
     if( this.MetaFormDes.FormOptions.length==1){
    this.MetaformDataArray.push(this.MetaformData)
     this.MetaFormDes.FormOptions.push({
-        selectedValue: ""
+        FormOptionType: "",
+        FormOptionName: "",
+        InputOption:"",
+        Required:"",
+        isMulti:"",
       })
     }else{
    this.MetaformDataArray.splice(i,0,this.MetaformData)
     this.MetaFormDes.FormOptions.splice(i,0 ,{
-        selectedValue: ""
+        FormOptionType: "",
+        FormOptionName: "",
+        InputOption:"",
+        Required:"",
+        isMulti:"",
       })
     }
 
