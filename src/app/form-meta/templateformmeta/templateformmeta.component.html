@@ -29,19 +29,20 @@
 
           <div class="button-row">
             表單相關選項
-            <button md-mini-fab type="button" style="background:yellow"><md-icon style="color:black">add</md-icon></button>
+            <button md-mini-fab type="button" style="background:yellow" (click)="onAddFormOptions()"><md-icon style="color:black">add</md-icon></button>
             <button md-mini-fab type="button"><md-icon>remove</md-icon></button>
           </div>
 
         </md-divider>
 
-         <md-select placeholder="表單選項" style="width:100%" >
+         <md-select placeholder="表單選項" style="width:100%"  [(ngModel)]="selectedValue[i]" [name]="'formoptions'+i">
                 <md-option [value]="null" selected="selected"></md-option>
                 <md-option *ngFor="let m of item " [value]="m[0]?.value">
                   {{ m[0]?.name }}
+                  {{m[0]?.value}}
                 </md-option>
               </md-select>
-
+{{selectedValue}}
       </div>
       </div>
     </form>

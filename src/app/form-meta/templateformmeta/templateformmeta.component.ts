@@ -15,19 +15,31 @@ MetaFormDes={
 MetaformData;
 MetaformDataArray=[]
 showform:boolean=false;
+selectedValue="";
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.db.object('/MetaformData').subscribe(a => {
-        this.MetaformData = a;
-      this.MetaformData.push([{
-        "OptionsData": []
+       a.push([{
+        "selectedValue": ""
       }])
        this.MetaformDataArray.push(a);
 
       this.showform = true;
     })
   }
-  onSubmit(f){}
+  onAddFormOptions(){
+
+     this.db.object('/MetaformData').subscribe(a => {
+       a.push([{
+        "selectedValue": ""
+      }])
+       this.MetaformDataArray.push(a);
+
+      this.showform = true;
+    })
+
+  }
+  onSubmit(f){console.log(f)}
 
 }
