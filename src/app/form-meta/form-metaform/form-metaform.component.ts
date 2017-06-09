@@ -22,14 +22,11 @@ export class FormMetaformComponent implements OnInit {
   PreviewForm;//預覽表單外觀
   ShowPreviewForm
   items;
-  constructor(private service: MetaformService, private fb: FormBuilder,private db: AngularFireDatabase) {
+  constructor(private service: MetaformService, private fb: FormBuilder, private db: AngularFireDatabase) {
 
   }
 
   ngOnInit() {
-  this.items = this.db.list('/item').subscribe(r=>console.log(r));
-
-
     this.service.GetMetaformData().subscribe(res => {
       this.MetaformData = res;
       this.MetaformDataArray.push(res);
@@ -42,6 +39,8 @@ export class FormMetaformComponent implements OnInit {
         ])
       })
       this.showform = true;
+      /*  const relative = this.db.object('/MetaformData');
+        relative.set( this.MetaformData)*/
     })
   }
   onAdd() {
@@ -81,8 +80,8 @@ export class FormMetaformComponent implements OnInit {
     else {
 
       if (formoption == 'textarea') {
-          (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
-           (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
+        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['isMultiSelect']).disable();
+        (this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options']).disable();
         this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['InputType'].disable();
       } else {
         if (formoption != 'select') {
