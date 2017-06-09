@@ -10,7 +10,12 @@ export class TemplateformmetaComponent implements OnInit {
 MetaFormDes={
   title:"",
   content:"",
-  imageinf:[]
+  imageinf:[],
+  FormOptions:[
+    {
+        selectedValue: ""
+      }
+  ]
 };
 MetaformData;
 MetaformDataArray=[]
@@ -20,24 +25,34 @@ selectedValue="";
 
   ngOnInit() {
     this.db.object('/MetaformData').subscribe(a => {
-       a.push([{
-        "selectedValue": ""
-      }])
-       this.MetaformDataArray.push(a);
+      this.MetaformData=a;
+       this.MetaformDataArray.push(this.MetaformData);
 
       this.showform = true;
     })
   }
-  onAddFormOptions(){
+  onAddFormOptions(i){
 
-     this.db.object('/MetaformData').subscribe(a => {
-       a.push([{
-        "selectedValue": ""
-      }])
-       this.MetaformDataArray.push(a);
+    if( this.MetaFormDes.FormOptions.length==1){
+   this.MetaformDataArray.push(this.MetaformData)
+    this.MetaFormDes.FormOptions.push({
+        selectedValue: ""
+      })
+    }else{
+   this.MetaformDataArray.splice(i,0,this.MetaformData)
+    this.MetaFormDes.FormOptions.splice(i,0 ,{
+        selectedValue: ""
+      })
+    }
 
-      this.showform = true;
-    })
+  }
+    onRemoveFormOptions(i){
+      console.log(this.MetaFormDes.FormOptions.length)
+      if(this.MetaFormDes.FormOptions.length>1){
+    this.MetaformDataArray.splice(i,1)
+
+    this.MetaFormDes.FormOptions.splice(i,1)
+      }
 
   }
   onSubmit(f){console.log(f)}
