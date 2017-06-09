@@ -46,7 +46,7 @@
               <div class="button-row">
                 表單相關選項
                 <button md-mini-fab type="button" (click)="onAdd()" [disabled]="form.invalid" style="background:yellow"><md-icon style="color:black">add</md-icon></button>
-                <button md-mini-fab type="button"><md-icon>remove</md-icon></button>
+                <button md-mini-fab type="button" (click)="onRemove(i)" ><md-icon>remove</md-icon></button>
               </div>
 
             </md-divider>

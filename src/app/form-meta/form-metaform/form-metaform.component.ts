@@ -37,14 +37,15 @@ export class FormMetaformComponent implements OnInit {
           "OptionsData": []
       }])
       this.MetaformDataArray.push(a);
-      console.log(this.MetaformDataArray[0][4][0].OptionsData)
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         content: ["", [Validators.required]],
-        formoptions: this.fb.array([
-          this.FormOptionsGroup()
-        ])
-      })
+        formoptions: this.fb.array([])})
+
+
+const t=(this.form.controls.formoptions as FormArray)
+t.push( this.FormOptionsGroup())
+
       this.showform = true;
          }
          )
@@ -79,6 +80,15 @@ export class FormMetaformComponent implements OnInit {
 
 
     }
+  }
+  onRemove(i){
+    if(this.MetaformDataArray.length>1){
+        (this.form.controls.formoptions as FormArray).removeAt(i)
+   this.MetaformDataArray.splice(i,1)
+
+      console.log(this.MetaformDataArray)
+    }
+console.log(i)
   }
   FormOptionsGroup() {
     return new FormGroup({
@@ -133,9 +143,9 @@ export class FormMetaformComponent implements OnInit {
 
   onRemoveOptionsData(i, a) {
 
-    const AddOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
-    if (AddOptionsData.length > 1) {
-      AddOptionsData.removeAt(a)
+    const RemoveOptionsData = this.form['controls']['formoptions']['controls'][i]['controls']['formoptionSetting']['controls']['Options'] as FormArray
+    if (RemoveOptionsData.length > 1) {
+      RemoveOptionsData.removeAt(a)
       console.log(i, a)
     }
 
