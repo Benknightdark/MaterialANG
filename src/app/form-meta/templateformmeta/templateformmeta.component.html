@@ -1,0 +1,52 @@
+<md-card >
+  <md-card-header>
+    <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
+      <!--表單主選項-->
+      <table cellspacing="0" style="width:100%; margin-bottom:2%">
+        <tr>
+          <td>
+            <md-input-container style="width:100%">
+              <input mdInput name="title" placeholder="表單標題" [(ngModel)]="MetaFormDes['title']" required>
+            </md-input-container>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <md-input-container style="width:100%">
+              <textarea mdInput placeholder="表單內容" style="width:100%" required [(ngModel)]="MetaFormDes['content']" name="content">
+                </textarea>
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+      <div  *ngIf="showform">
+      <div *ngFor="let item of MetaformDataArray ; let i=index" >
+        <md-divider style="margin-bottom:5%">
+
+          <div class="button-row">
+            表單相關選項
+            <button md-mini-fab type="button" style="background:yellow"><md-icon style="color:black">add</md-icon></button>
+            <button md-mini-fab type="button"><md-icon>remove</md-icon></button>
+          </div>
+
+        </md-divider>
+
+         <md-select placeholder="表單選項" style="width:100%" >
+                <md-option [value]="null" selected="selected"></md-option>
+                <md-option *ngFor="let m of item " [value]="m[0]?.value">
+                  {{ m[0]?.name }}
+                </md-option>
+              </md-select>
+
+      </div>
+      </div>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+
+  </md-card-actions>
+</md-card>

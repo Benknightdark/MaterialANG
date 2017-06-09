@@ -15,6 +15,7 @@ import { HttpModule } from "@angular/http";
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FirebaseapiModule } from '../firebaseapi/firebaseapi.module';
 import { FormMetaformListComponent } from './form-metaform-list/form-metaform-list.component';
+import { TemplateformmetaComponent } from './templateformmeta/templateformmeta.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,7 @@ import { FormMetaformListComponent } from './form-metaform-list/form-metaform-li
     ReactiveFormsModule,
     FirebaseapiModule
   ],
-  declarations: [FormMetaformComponent, FormMetaformListComponent],
+  declarations: [FormMetaformComponent, FormMetaformListComponent, TemplateformmetaComponent],
   exports:[FormMetaformComponent],
   providers:[MetaformService]
 })

@@ -30,6 +30,7 @@ export class FormMetaformComponent implements OnInit {
   ngOnInit() {
     // const relative = this.db.object('/MetaformData');
     //relative.set( this.MetaformData)
+
     this.db.object('/MetaformData').subscribe(a => {
       this.MetaformData = a;
       this.MetaformData.push([{
