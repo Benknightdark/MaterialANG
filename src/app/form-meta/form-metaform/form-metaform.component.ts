@@ -29,26 +29,25 @@ export class FormMetaformComponent implements OnInit {
 
   ngOnInit() {
     // const relative = this.db.object('/MetaformData');
-       //relative.set( this.MetaformData)
-         this.db.object('/MetaformData').subscribe(a=>
-         {
-     this.MetaformData = a;
-      this.MetaformData.push( [{
-          "OptionsData": []
+    //relative.set( this.MetaformData)
+    this.db.object('/MetaformData').subscribe(a => {
+      this.MetaformData = a;
+      this.MetaformData.push([{
+        "OptionsData": []
       }])
       this.MetaformDataArray.push(a);
       this.form = this.fb.group({
         title: ["", [Validators.required]],
         content: ["", [Validators.required]],
-        formoptions: this.fb.array([])})
+        formoptions: this.fb.array([this.FormOptionsGroup()])
+      })
 
 
-const t=(this.form.controls.formoptions as FormArray)
-t.push( this.FormOptionsGroup())
+
 
       this.showform = true;
-         }
-         )
+    }
+    )
     // this.service.GetMetaformData().subscribe(res => {
 
     //   this.MetaformData = res;
@@ -81,14 +80,14 @@ t.push( this.FormOptionsGroup())
 
     }
   }
-  onRemove(i){
-    if(this.MetaformDataArray.length>1){
-        (this.form.controls.formoptions as FormArray).removeAt(i)
-   this.MetaformDataArray.splice(i,1)
+  onRemove(i) {
+    if (this.MetaformDataArray.length > 1) {
+      (this.form.controls.formoptions as FormArray).removeAt(i)
+      this.MetaformDataArray.splice(i, 1)
 
       console.log(this.MetaformDataArray)
     }
-console.log(i)
+    console.log(i)
   }
   FormOptionsGroup() {
     return new FormGroup({
@@ -157,8 +156,8 @@ console.log(i)
     console.log(this.ShowPreviewForm)
   }
   onSubmit() {
-  const temp=   [];
-  temp.push({id:UUID.UUID(),data: (this.form.value)})
+    const temp = [];
+    temp.push({ id: UUID.UUID(), data: (this.form.value) })
 
     console.log(temp)
   }
