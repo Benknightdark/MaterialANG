@@ -7,7 +7,11 @@ import { AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./templateformmeta.component.css']
 })
 export class TemplateformmetaComponent implements OnInit {
-MetaFormDes={title:"",content:"",imageinf:[]};;
+MetaFormDes={
+  title:"",
+  content:"",
+  imageinf:[]
+};
 MetaformData;
 MetaformDataArray=[]
 showform:boolean=false;
