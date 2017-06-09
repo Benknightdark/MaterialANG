@@ -27,7 +27,7 @@
           <tr>
             <td>
               <md-input-container style="width:100%">
-                <textarea mdInput placeholder="表單內容" formControlName="content">
+                <textarea mdInput placeholder="表單內容" formControlName="content" style="width:100%">
                 </textarea>
               </md-input-container>
               <div *ngIf="form['controls']['content'].touched&& form['controls']['content'].errors">
@@ -213,7 +213,6 @@
               </md-list-item>
             </md-list>
           </div>
-          {{item|json}}
         </div>
       </div>
 
