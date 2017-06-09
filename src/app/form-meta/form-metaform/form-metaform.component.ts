@@ -27,9 +27,15 @@ export class FormMetaformComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.GetMetaformData().subscribe(res => {
-      this.MetaformData = res;
-      this.MetaformDataArray.push(res);
+    // const relative = this.db.object('/MetaformData');
+       //relative.set( this.MetaformData)
+         this.db.object('/MetaformData').subscribe(a=>
+         {
+     this.MetaformData = a;
+      this.MetaformData.push( [{
+          "OptionsData": []
+      }])
+      this.MetaformDataArray.push(a);
       console.log(this.MetaformDataArray[0][4][0].OptionsData)
       this.form = this.fb.group({
         title: ["", [Validators.required]],
@@ -39,9 +45,25 @@ export class FormMetaformComponent implements OnInit {
         ])
       })
       this.showform = true;
-      /*  const relative = this.db.object('/MetaformData');
-        relative.set( this.MetaformData)*/
-    })
+         }
+         )
+    // this.service.GetMetaformData().subscribe(res => {
+
+    //   this.MetaformData = res;
+    //   console.log( this.MetaformData)
+    //   this.MetaformDataArray.push(res);
+    //   console.log(this.MetaformDataArray[0][4][0].OptionsData)
+    //   this.form = this.fb.group({
+    //     title: ["", [Validators.required]],
+    //     content: ["", [Validators.required]],
+    //     formoptions: this.fb.array([
+    //       this.FormOptionsGroup()
+    //     ])
+    //   })
+    //   this.showform = true;
+
+    //   ;
+    // })
   }
   onAdd() {
     if (this.form['controls']['formoptions']['controls'][this.MetaformDataArray.length - 1].pristine) {
@@ -51,6 +73,7 @@ export class FormMetaformComponent implements OnInit {
       formoptionsarray.push(
         this.FormOptionsGroup()
       );
+
       this.MetaformDataArray.push(this.MetaformData)
 
 
