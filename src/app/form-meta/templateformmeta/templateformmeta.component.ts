@@ -39,9 +39,11 @@ export class TemplateformmetaComponent implements OnInit {
     return {
       FormOptionType: "",
       FormOptionName: "",
+      FormOptionData:[""],
       InputType: "",
       Required: "",
       isMultiSelect: "",
+
     }
   }
   onAddFormOptions(i) {

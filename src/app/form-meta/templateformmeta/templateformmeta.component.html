@@ -75,6 +75,19 @@
                   </md-radio-button>
                 </md-radio-group>
           </div>
+           <div *ngIf="
+           MetaFormDes['FormOptions'][i]['FormOptionType']=='select' ||
+           MetaFormDes['FormOptions'][i]['FormOptionType']=='radio' ||
+           MetaFormDes['FormOptions'][i]['FormOptionType']=='checkbox'
+           ">
+           <div *ngFor="let formoptiondata of MetaFormDes['FormOptions'][i]['FormOptionData'] ;let a =index">
+             <md-input-container style="width:100%">
+                  <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData']" [name]="'FormOptionData'+i">
+                </md-input-container>
+           </div>
+
+
+           </div>
         </div>
       </div>
       data:{{f["value"]|json}}
