@@ -99,8 +99,9 @@ this.isOpenPreview=checked
 
   }
   imageUploaded(data){
-  const DMImage=data["src"].replace("data:image/jpeg;base64,","")
-  // this.MetaFormDes.imageinfo=DMImage;
+    console.log(data)
+  const DMImage=data["src"] //.replace("data:image/jpeg;base64,","")
+   this.MetaFormDes.imageinfo=DMImage;
   //       firebase.storage().ref().child("/test/"+(Date.now()+".jpg")).putString(DMImage,'base64').then((snapshot) => {
   //               console.log(snapshot)
   //           }).catch((e)=>{console.log(e)});

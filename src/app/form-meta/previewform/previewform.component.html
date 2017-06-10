@@ -11,12 +11,21 @@
       <table>
         <tr>
           <td>
-            <img  ng-box [image]="true" src="https://firebasestorage.googleapis.com/v0/b/helloeightd.appspot.com/o/test%2F1497092997904.jpg?alt=media&token=dbcac9fd-311b-41bd-8274-767cff87614e"  style="width: 40%;
+            <img   [src]="MetaFormDes.imageinfo"  style="width: 40%;
   height: auto;
   display:block;
     margin:auto;
   ">
-<!-->[src]="'data:image/jpg;base64,'+MetaFormDes.imageinfo"</!-->
+<!-->[src]="'data:image/jpg;base64,'+MetaFormDes.imageinfo"
+https://firebasestorage.googleapis.com/v0/b/helloeightd.appspot.com/o/test%2F1497092997904.jpg?alt=media&token=dbcac9fd-311b-41bd-8274-767cff87614e
+
+
+ <img  ng-box [image]="true" [src]="MetaFormDes.imageinfo"  style="width: 40%;
+  height: auto;
+  display:block;
+    margin:auto;
+  ">
+</!-->
           </td>
         </tr>
         <tr>
