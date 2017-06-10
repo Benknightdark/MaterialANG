@@ -58,28 +58,31 @@
                 </md-radio-group>
               </td>
             </tr>
-
-
-
           </table>
           <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='input'">
-
             <md-select placeholder="輸入選項類型" style="width:100%" [(ngModel)]="MetaFormDes['FormOptions'][i]['InputType']" [name]="'InputType'+i">
               <md-option [value]="null" selected="selected"></md-option>
               <md-option *ngFor="let m of item.InputTypes ;let a =index" [value]="m.value">
                 {{ m.name }} {{m.value}}
               </md-option>
             </md-select>
+          </div>
 
-
+          <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='select'">
+            是否為複選：
+                <md-radio-group [(ngModel)]="MetaFormDes['FormOptions'][i]['isMultiSelect']" [name]="'isMultiSelect'+i">
+                  <md-radio-button [value]=[ismultiselect.value] *ngFor="let ismultiselect of item.isMultiSelect">{{ismultiselect.name}}
+                  </md-radio-button>
+                </md-radio-group>
           </div>
         </div>
       </div>
       data:{{f["value"]|json}}
+      <md-card-actions>
+        <button md-button type="submit" style="    background: yellow;" [disabled]="f['invalid']">送出</button>
+      </md-card-actions>
     </form>
   </md-card-content>
-  <md-card-actions>
 
-  </md-card-actions>
 </md-card>
 MetaFormDes:{{MetaFormDes|json}}

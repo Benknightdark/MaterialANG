@@ -28,6 +28,12 @@ export class TemplateformmetaComponent implements OnInit {
 
       this.showform = true;
     })
+    // this.db.object('/MetaformData').update({
+    //   isMultiSelect:[
+    //     {name:"是",value:true},
+    //     {name:"否",value:false}
+    //   ]
+    // })
   }
   ReturnFormOptions() {
     return {
@@ -35,7 +41,7 @@ export class TemplateformmetaComponent implements OnInit {
       FormOptionName: "",
       InputType: "",
       Required: "",
-      isMulti: "",
+      isMultiSelect: "",
     }
   }
   onAddFormOptions(i) {
