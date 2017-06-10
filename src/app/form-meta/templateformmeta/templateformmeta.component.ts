@@ -98,8 +98,13 @@ this.isOpenPreview=checked
   onSubmit(f){
 
   }
-  imageUploaded(event){
-    console.log(event)
+  imageUploaded(data){
+//  const DMImage=data["src"].replace("data:image/jpeg;base64,","")
+
+//         firebase.storage().ref().child("/test/"+(Date.now()+".jpg")).putString(DMImage,'base64').then((snapshot) => {
+//                 console.log(snapshot)
+//             }).catch((e)=>{console.log(e)});
+
   }
   imageRemoved(event){
     console.log(event)

@@ -27,9 +27,13 @@
         </tr>
         <tr>
           <td>
-            <image-upload [buttonCaption]="'上傳活動DM'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
-              (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)"
+            <image-upload [buttonCaption]="'上傳活動DM'"
+            [dropBoxMessage]="'Drop Your DM'"
+            (onFileUploadFinish)="imageUploaded($event)"
+              (onRemove)="imageRemoved($event)"
+              (isPending)="disableSendButton($event)"
               [max]="1"
+              [fileTooLargeMessage]="'圖片容量太大'"
               ></image-upload>
           </td>
         </tr>
