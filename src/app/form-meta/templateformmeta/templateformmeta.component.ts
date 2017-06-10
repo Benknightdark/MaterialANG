@@ -50,8 +50,8 @@ export class TemplateformmetaComponent implements OnInit {
       this.MetaformDataArray.push(this.MetaformData)
       this.MetaFormDes.FormOptions.push(this.ReturnFormOptions())
     } else {
-      this.MetaformDataArray.splice(i+1, 0, this.MetaformData)
-      this.MetaFormDes.FormOptions.splice(i+1, 0, this.ReturnFormOptions())
+      this.MetaformDataArray.splice(i + 1, 0, this.MetaformData)
+      this.MetaFormDes.FormOptions.splice(i + 1, 0, this.ReturnFormOptions())
     }
 
   }
@@ -65,13 +65,15 @@ export class TemplateformmetaComponent implements OnInit {
   }
   onAddOptionsData(i, a) {
     console.log(a)
-    // if(a==0){
-    // this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
-    // }else{
-    //   this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a,0,"")
-    // }
+    if( this.MetaFormDes['FormOptions'][i]['FormOptionData'].length==1){
+    this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
+      this.MetaformDataArray[i].FormOptionData.push("")
+    }else{
+      this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a+1,0,"")
+       this.MetaformDataArray[i].FormOptionData.splice(a+1,0,"")
+    }
 
-this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a,0,"")
+
 
 
     console.log(a)
@@ -80,6 +82,7 @@ this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a,0,"")
     if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length > 1) {
       //console.log(this.MetaFormDes['FormOptions'][i]['FormOptionData'][a])
       this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a, 1)
+      this.MetaformDataArray[i].FormOptionData.splice(a, 1)
     }
 
   }
