@@ -37,7 +37,7 @@ export class TemplateformmetaComponent implements OnInit {
     return {
       FormOptionType: "",
       FormOptionName: "",
-      FormOptionData:[""],
+      FormOptionData: [""],
       InputType: "",
       Required: "",
       isMultiSelect: "",
@@ -63,12 +63,24 @@ export class TemplateformmetaComponent implements OnInit {
     }
 
   }
-  onAddOptionsData(i,a){
-   this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
-   a.push("")
-  console.log(a)
+  onAddOptionsData(i, a) {
+    console.log(a)
+    if(this.MetaFormDes['FormOptions'][i]['FormOptionData'].length ==1){
+    this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
+    }else{
+      this.MetaFormDes['FormOptions'][a]['FormOptionData'].splice(a,0,"")
+    }
+
+
+
+
+    console.log(a)
   }
-  onRemoveOptionsData(i,a){
+  onRemoveOptionsData(i, a) {
+    if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length > 1) {
+      //console.log(this.MetaFormDes['FormOptions'][i]['FormOptionData'][a])
+      this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a, 1)
+    }
 
   }
   onSubmit(f) { console.log(f) }
