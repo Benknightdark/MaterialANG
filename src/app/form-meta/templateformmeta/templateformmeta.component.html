@@ -115,7 +115,7 @@
           </div>
         </div>
       </div>
-      data:{{f["value"]|json}}
+  <!--    data:{{f["value"]|json}}-->
       <md-card-actions>
         <button md-button type="submit" style="    background: yellow;" [disabled]="f['invalid']">送出</button>
       </md-card-actions>
@@ -123,6 +123,6 @@
   </md-card-content>
 
 </md-card>
-MetaFormDes:{{MetaFormDes|json}}
+<!--MetaFormDes:{{MetaFormDes|json}}-->
 
 <app-previewform [MetaFormDes]="MetaFormDes" *ngIf="isOpenPreview"></app-previewform>
