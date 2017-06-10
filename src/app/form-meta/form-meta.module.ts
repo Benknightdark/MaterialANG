@@ -15,7 +15,10 @@ import { TemplateformmetaComponent } from './templateformmeta/templateformmeta.c
 import { PreviewformComponent } from './previewform/previewform.component';
 
 import { NgUploaderModule } from 'ngx-uploader';
+import { NgBoxModule } from 'ngbox/ngbox.module';
 
+import { NgBoxService } from 'ngbox/ngbox.service';
+import { BrowserModule } from "@angular/platform-browser";
 @NgModule({
   imports: [
     CommonModule,
@@ -25,13 +28,14 @@ import { NgUploaderModule } from 'ngx-uploader';
     FormsModule,
     ReactiveFormsModule,
     FirebaseapiModule,
+    BrowserModule,
     ImageUploadModule.forRoot(),
-
+NgBoxModule
 
 
   ],
   declarations: [ FormMetaformListComponent, TemplateformmetaComponent, PreviewformComponent],
   exports:[],
-  providers:[MetaformService]
+  providers:[MetaformService,NgBoxService]
 })
 export class FormMetaModule { }
