@@ -29,9 +29,7 @@ export class TemplateformmetaComponent implements OnInit {
       this.showform = true;
     })
     // this.db.object('/MetaformData').update({
-    //   isMultiSelect:[
-    //     {name:"是",value:true},
-    //     {name:"否",value:false}
+    //   FormOptionData:[""
     //   ]
     // })
   }
@@ -63,6 +61,14 @@ export class TemplateformmetaComponent implements OnInit {
       this.MetaformDataArray.splice(i, 1)
       this.MetaFormDes.FormOptions.splice(i, 1)
     }
+
+  }
+  onAddOptionsData(i,a){
+   this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
+   a.push("")
+  console.log(a)
+  }
+  onRemoveOptionsData(i,a){
 
   }
   onSubmit(f) { console.log(f) }
