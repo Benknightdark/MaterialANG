@@ -84,10 +84,8 @@ export class TemplateformmetaComponent implements OnInit {
     if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length > 1) {
       //console.log(this.MetaFormDes['FormOptions'][i]['FormOptionData'][a])
       this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a, 1)
-<<<<<<< HEAD
       this.MetaformDataArray[i].FormOptionData.splice(a, 1)
-=======
->>>>>>> e3e001ae696afce0ae162248abafed03e33aa246
+
     }
 
   }
