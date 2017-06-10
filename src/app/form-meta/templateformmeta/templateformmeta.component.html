@@ -2,8 +2,8 @@
   <md-card-header>
     <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
     <md-slide-toggle [checked]="isOpenPreview" (change)="onOpenPreview($event.checked)">
-       開啟表單預覽
-      </md-slide-toggle>
+      開啟表單預覽
+    </md-slide-toggle>
   </md-card-header>
   <md-card-content>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
@@ -25,12 +25,14 @@
             </md-input-container>
           </td>
         </tr>
-<tr><td><image-upload
-[buttonCaption]="'上傳活動DM'"
-  [dropBoxMessage]="'Drop Your DM'"
-  (onFileUploadFinish)="imageUploaded($event)"
-  (onRemove)="imageRemoved($event)"
-  (isPending)="disableSendButton($event)"></image-upload></td></tr>
+        <tr>
+          <td>
+            <image-upload [buttonCaption]="'上傳活動DM'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+              (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)"
+              [max]="1"
+              ></image-upload>
+          </td>
+        </tr>
       </table>
 
       <div *ngIf="showform">

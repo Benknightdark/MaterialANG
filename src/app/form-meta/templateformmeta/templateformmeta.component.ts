@@ -93,8 +93,9 @@ this.isOpenPreview=checked
       //console.log(this.MetaFormDes['FormOptions'][i]['FormOptionData'][a])
       this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a, 1)
       this.MetaformDataArray[i].FormOptionData.splice(a, 1)
-
     }
+  }
+  onSubmit(f){
 
   }
   imageUploaded(event){
@@ -102,7 +103,6 @@ this.isOpenPreview=checked
   }
   imageRemoved(event){
     console.log(event)
-
   }
   disableSendButton(event){
     console.log(event)
