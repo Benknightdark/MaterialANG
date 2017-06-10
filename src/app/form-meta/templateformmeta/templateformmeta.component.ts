@@ -19,6 +19,7 @@ export class TemplateformmetaComponent implements OnInit {
   MetaformDataArray = []
   showform: boolean = false;
   selectedValue = "";
+  isOpenPreview:boolean=false;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -32,6 +33,9 @@ export class TemplateformmetaComponent implements OnInit {
     //   FormOptionData:[""
     //   ]
     // })
+  }
+  onOpenPreview(checked){
+this.isOpenPreview=checked
   }
   ReturnFormOptions() {
     return {
@@ -66,17 +70,14 @@ export class TemplateformmetaComponent implements OnInit {
   onAddOptionsData(i, a) {
     console.log(a)
 
-    if( this.MetaFormDes['FormOptions'][i]['FormOptionData'].length==1){
-    this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
+    if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length == 1) {
+      this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
       this.MetaformDataArray[i].FormOptionData.push("")
-    }else{
-      this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a+1,0,"")
-       this.MetaformDataArray[i].FormOptionData.splice(a+1,0,"")
+    } else {
+      this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a + 1, 0, "")
+      this.MetaformDataArray[i].FormOptionData.splice(a + 1, 0, "")
 
     }
-
-
-
 
     console.log(a)
   }

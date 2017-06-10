@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormMetaformComponent } from './form-metaform.component';
+import { PreviewformComponent } from './previewform.component';
 
-describe('FormMetaformComponent', () => {
-  let component: FormMetaformComponent;
-  let fixture: ComponentFixture<FormMetaformComponent>;
+describe('PreviewformComponent', () => {
+  let component: PreviewformComponent;
+  let fixture: ComponentFixture<PreviewformComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormMetaformComponent ]
+      declarations: [ PreviewformComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormMetaformComponent);
+    fixture = TestBed.createComponent(PreviewformComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

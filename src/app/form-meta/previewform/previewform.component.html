@@ -1,0 +1,26 @@
+<md-card>
+  <md-card-header>
+    <md-card-title style="font-size: 30px">
+      <div [innerHTML]="MetaFormDes.title" style="white-space: pre-wrap"></div>
+    </md-card-title>
+        <md-card-subtitle>預覽表單</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <form>
+      <table>
+        <tr>
+          <td>
+               <img src="http://i.imgur.com/1pbq9js.jpg" alt="">
+          </td>
+        </tr>
+        <tr>
+          <td>
+               <div [innerHTML]="MetaFormDes.content" style="white-space: pre-wrap"></div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </md-card-content>
+
+</md-card>
+

@@ -1,6 +1,9 @@
 <md-card>
   <md-card-header>
     <md-card-title style="font-size: 30px">建立報名表單</md-card-title>
+    <md-slide-toggle [checked]="isOpenPreview" (change)="onOpenPreview($event.checked)">
+       開啟表單預覽
+      </md-slide-toggle>
   </md-card-header>
   <md-card-content>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
@@ -108,3 +111,5 @@
 
 </md-card>
 MetaFormDes:{{MetaFormDes|json}}
+
+<app-previewform [MetaFormDes]="MetaFormDes" *ngIf="isOpenPreview"></app-previewform>
