@@ -24,8 +24,9 @@ export class TemplateformmetaComponent implements OnInit {
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.db.object('/MetaformData').subscribe(a => {
+    this.db.object('/MetaformData').share().subscribe(a => {
       this.MetaformData = a;
+
       this.MetaformDataArray.push(this.MetaformData);
 
       this.showform = true;
@@ -58,13 +59,31 @@ this.isOpenPreview=checked
   onAddFormOptions(i) {
 
     if (this.MetaFormDes.FormOptions.length == 1) {
-      this.MetaformDataArray.push(this.MetaformData)
-      this.MetaFormDes.FormOptions.push(this.ReturnFormOptions())
-    } else {
-      this.MetaformDataArray.splice(i + 1, 0, this.MetaformData)
-      this.MetaFormDes.FormOptions.splice(i + 1, 0, this.ReturnFormOptions())
-    }
 
+
+ this.db.object('/MetaformData').share().subscribe(a => {
+
+
+      this.MetaformDataArray.push(a);
+  this.MetaFormDes.FormOptions.push(this.ReturnFormOptions())
+      this.showform = true;
+    })
+
+
+
+
+  } else {
+
+ this.db.object('/MetaformData').share().subscribe(a => {
+          this.MetaformDataArray.splice(i + 1, 0, a)
+     this.MetaFormDes.FormOptions.splice(i + 1, 0, this.ReturnFormOptions())
+      this.showform = true;
+    })
+
+
+
+    }
+console.log(this.MetaformDataArray)
   }
   onRemoveFormOptions(i) {
     console.log(this.MetaFormDes.FormOptions.length)
@@ -76,7 +95,8 @@ this.isOpenPreview=checked
   }
   onAddOptionsData(i, a) {
     console.log(a)
-
+    console.log(this.MetaformDataArray)
+console.log( this.MetaformDataArray[i].FormOptionData)
     if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length == 1) {
       this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
       this.MetaformDataArray[i].FormOptionData.push("")

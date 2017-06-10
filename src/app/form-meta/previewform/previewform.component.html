@@ -1,4 +1,4 @@
- <md-divider style="margin-bottom:2%"></md-divider>
+<md-divider style="margin-bottom:2%"></md-divider>
 <md-card>
   <md-card-header>
     <md-card-title style="font-size: 30px">
@@ -11,21 +11,18 @@
       <table>
         <tr>
           <td>
-            <img   [src]="MetaFormDes.imageinfo"  style="width: 40%;
+            <img [src]="MetaFormDes.imageinfo" style="width: 50%;
   height: auto;
   display:block;
     margin:auto;
   ">
-<!-->[src]="'data:image/jpg;base64,'+MetaFormDes.imageinfo"
-https://firebasestorage.googleapis.com/v0/b/helloeightd.appspot.com/o/test%2F1497092997904.jpg?alt=media&token=dbcac9fd-311b-41bd-8274-767cff87614e
-
-
- <img  ng-box [image]="true" [src]="MetaFormDes.imageinfo"  style="width: 40%;
+            <!-->[src]="'data:image/jpg;base64,'+MetaFormDes.imageinfo" https://firebasestorage.googleapis.com/v0/b/helloeightd.appspot.com/o/test%2F1497092997904.jpg?alt=media&token=dbcac9fd-311b-41bd-8274-767cff87614e
+            <img ng-box [image]="true" [src]="MetaFormDes.imageinfo" style="width: 40%;
   height: auto;
   display:block;
     margin:auto;
   ">
-</!-->
+            </!-->
           </td>
         </tr>
         <tr>
@@ -33,7 +30,43 @@ https://firebasestorage.googleapis.com/v0/b/helloeightd.appspot.com/o/test%2F149
             <div [innerHTML]="MetaFormDes.content" style="white-space: pre-wrap"></div>
           </td>
         </tr>
+
+
       </table>
+      <div *ngFor="let item of MetaFormDes.FormOptions">
+
+        <div *ngIf="item.FormOptionType=='input'">
+          <md-input-container style="width:100%">
+            <input mdInput [placeholder]="item.FormOptionName" [type]="item.InputType" [required]="item.Required">
+          </md-input-container>
+        </div>
+        <div *ngIf="item.FormOptionType=='textarea'">
+          <md-input-container style="width:100%">
+            <textarea mdInput [placeholder]="item.FormOptionName" type="text" [required]="item.Required"></textarea>
+          </md-input-container>
+        </div>
+        <div *ngIf="item.FormOptionType=='select'">
+          {{item.isMultiSelect}}
+          <div *ngIf="!item.isMultiSelect">
+            <md-select [placeholder]="item.FormOptionName" [required]="item.Required" style="width:100%">
+              <md-option *ngFor="let m of item.FormOptionData ;let a =index" [value]="m">
+                {{ m}}
+              </md-option>
+            </md-select>
+          </div>
+
+
+          <div *ngIf="item.isMultiSelect">
+            <md-select [placeholder]="item.FormOptionName" [required]="item.Required" style="width:100%" multiple="">
+              <md-option *ngFor="let m of item.FormOptionData ;let a =index" [value]="m">
+                {{ m}}
+              </md-option>
+            </md-select>
+          </div>
+        </div>
+
+      </div>
+
     </form>
   </md-card-content>
 
