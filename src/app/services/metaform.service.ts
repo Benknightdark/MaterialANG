@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import {Observable} from 'rxjs';
 import 'rxjs'
-import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireDatabase,FirebaseObjectObservable } from "angularfire2/database";
+import * as firebase from 'firebase';
 @Injectable()
 export class MetaformService {
 
@@ -12,6 +13,9 @@ export class MetaformService {
    return  this.http.get("http://localhost:3000/FormMeta")
        .map(res => res.json()).share();
  // return this.db.object('/MetaformData').share();
+  }
+  test(){
+   return  firebase.storage().ref()
   }
 
 }
