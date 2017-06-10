@@ -102,6 +102,7 @@ export class TemplateformmetaComponent implements OnInit {
 
   }
   imageRemoved(event) {
+    this.MetaFormDes.imageinfo ="";
     console.log(event)
   }
   disableSendButton(event) {

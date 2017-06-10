@@ -54,8 +54,6 @@
               </md-option>
             </md-select>
           </div>
-
-
           <div *ngIf="item.isMultiSelect">
             <md-select [placeholder]="item.FormOptionName" [required]="item.Required" style="width:100%" multiple="">
               <md-option *ngFor="let m of item.FormOptionData ;let a =index" [value]="m">
@@ -64,7 +62,24 @@
             </md-select>
           </div>
         </div>
+        <div *ngIf="item.FormOptionType=='radio'">
+          {{ item.FormOptionName}}
+          <md-radio-group>
+            <md-radio-button *ngFor="let m of item.FormOptionData" [value]="m">
+              {{m}}
+            </md-radio-button>
+          </md-radio-group>
 
+        </div>
+         <div *ngIf="item.FormOptionType=='checkbox'">
+          {{ item.FormOptionName}}
+          <md-checkbox  *ngFor="let m of item.FormOptionData" [value]="m">
+            {{m}}
+          </md-checkbox>
+
+
+
+        </div>
       </div>
 
     </form>
