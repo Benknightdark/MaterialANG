@@ -36,19 +36,36 @@
 
           <md-select placeholder="表單選項" style="width:100%" [(ngModel)]="MetaFormDes.FormOptions[i].FormOptionType" [name]="'FormOptionType'+i">
             <md-option [value]="null" selected="selected"></md-option>
-            <md-option *ngFor="let m of item " [value]="m[0]?.value">
-              {{ m[0]?.name }} {{m[0]?.value}}
+            <md-option *ngFor="let m of item.FormOptions ;let a =index" [value]="m.value">
+
+              {{ m.name }} {{m.value}}
+
             </md-option>
           </md-select>
 
           <table cellspacing="0" style="width:100%; margin-bottom:5%">
+            <!-->表單選項名稱</!-->
             <tr>
               <td>
                 <md-input-container style="width:100%">
-                  <input mdInput placeholder="輸入選項名稱" type="text" [(ngModel)]="MetaFormDes.FormOptions[i].FormOptionName" [name]="'FormOptionName'+i">
+                  <input mdInput placeholder="選項名稱" type="text" [(ngModel)]="MetaFormDes.FormOptions[i].FormOptionName" [name]="'FormOptionName'+i">
                 </md-input-container>
               </td>
             </tr>
+
+            <tr>
+              <td>
+
+                是否一定要輸入值：
+                <md-radio-group  [(ngModel)]="MetaFormDes.FormOptions[i].Required">
+                  <md-radio-button value=true >是</md-radio-button>
+                  <md-radio-button value=false >否</md-radio-button>
+                </md-radio-group>
+
+
+              </td>
+            </tr>
+
           </table>
 
         </div>
