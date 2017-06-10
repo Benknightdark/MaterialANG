@@ -22,7 +22,7 @@ import { FormMetaModule } from "app/form-meta/form-meta.module";
 import { RouterModule } from "@angular/router";
 import { FormdataComponent } from './formdata/formdata.component';
 import { FirebaseapiModule } from './firebaseapi/firebaseapi.module';
-import { PreviewformComponent } from './previewform/previewform.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { PreviewformComponent } from './previewform/previewform.component';
     NestednavComponent,
     HomeComponent,
     FormdataComponent,
-    PreviewformComponent
+
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,8 @@ import { PreviewformComponent } from './previewform/previewform.component';
       MaterialModule,
       FormMetaModule,
  AppRoutingModule,
-FirebaseapiModule
+FirebaseapiModule,
+
 
 
   ],

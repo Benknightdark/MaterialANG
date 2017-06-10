@@ -25,7 +25,14 @@
             </md-input-container>
           </td>
         </tr>
+<tr><td><image-upload
+[buttonCaption]="'上傳活動DM'"
+  [dropBoxMessage]="'Drop Your DM'"
+  (onFileUploadFinish)="imageUploaded($event)"
+  (onRemove)="imageRemoved($event)"
+  (isPending)="disableSendButton($event)"></image-upload></td></tr>
       </table>
+
       <div *ngIf="showform">
         <div *ngFor="let item of MetaformDataArray ; let i=index">
 

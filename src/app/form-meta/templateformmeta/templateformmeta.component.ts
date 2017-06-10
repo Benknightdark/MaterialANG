@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-templateformmeta',
   templateUrl: './templateformmeta.component.html',
@@ -96,6 +97,17 @@ this.isOpenPreview=checked
     }
 
   }
-  onSubmit(f) { console.log(f) }
+  imageUploaded(event){
+    console.log(event)
+  }
+  imageRemoved(event){
+    console.log(event)
+
+  }
+  disableSendButton(event){
+    console.log(event)
+
+  }
+
 
 }
