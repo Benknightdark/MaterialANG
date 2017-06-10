@@ -29,9 +29,7 @@ export class TemplateformmetaComponent implements OnInit {
       this.showform = true;
     })
     // this.db.object('/MetaformData').update({
-    //   isMultiSelect:[
-    //     {name:"是",value:true},
-    //     {name:"否",value:false}
+    //   FormOptionData:[""
     //   ]
     // })
   }
@@ -39,7 +37,7 @@ export class TemplateformmetaComponent implements OnInit {
     return {
       FormOptionType: "",
       FormOptionName: "",
-      FormOptionData:[""],
+      FormOptionData: [""],
       InputType: "",
       Required: "",
       isMultiSelect: "",
@@ -52,8 +50,8 @@ export class TemplateformmetaComponent implements OnInit {
       this.MetaformDataArray.push(this.MetaformData)
       this.MetaFormDes.FormOptions.push(this.ReturnFormOptions())
     } else {
-      this.MetaformDataArray.splice(i, 0, this.MetaformData)
-      this.MetaFormDes.FormOptions.splice(i, 0, this.ReturnFormOptions())
+      this.MetaformDataArray.splice(i+1, 0, this.MetaformData)
+      this.MetaFormDes.FormOptions.splice(i+1, 0, this.ReturnFormOptions())
     }
 
   }
@@ -62,6 +60,26 @@ export class TemplateformmetaComponent implements OnInit {
     if (this.MetaFormDes.FormOptions.length > 1) {
       this.MetaformDataArray.splice(i, 1)
       this.MetaFormDes.FormOptions.splice(i, 1)
+    }
+
+  }
+  onAddOptionsData(i, a) {
+    console.log(a)
+    // if(a==0){
+    // this.MetaFormDes['FormOptions'][i]['FormOptionData'].push("")
+    // }else{
+    //   this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a,0,"")
+    // }
+
+this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a,0,"")
+
+
+    console.log(a)
+  }
+  onRemoveOptionsData(i, a) {
+    if (this.MetaFormDes['FormOptions'][i]['FormOptionData'].length > 1) {
+      //console.log(this.MetaFormDes['FormOptions'][i]['FormOptionData'][a])
+      this.MetaFormDes['FormOptions'][i]['FormOptionData'].splice(a, 1)
     }
 
   }

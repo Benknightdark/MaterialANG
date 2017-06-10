@@ -70,24 +70,30 @@
 
           <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='select'">
             是否為複選：
-                <md-radio-group [(ngModel)]="MetaFormDes['FormOptions'][i]['isMultiSelect']" [name]="'isMultiSelect'+i">
-                  <md-radio-button [value]=[ismultiselect.value] *ngFor="let ismultiselect of item.isMultiSelect">{{ismultiselect.name}}
-                  </md-radio-button>
-                </md-radio-group>
+            <md-radio-group [(ngModel)]="MetaFormDes['FormOptions'][i]['isMultiSelect']" [name]="'isMultiSelect'+i">
+              <md-radio-button [value]=[ismultiselect.value] *ngFor="let ismultiselect of item.isMultiSelect">{{ismultiselect.name}}
+              </md-radio-button>
+            </md-radio-group>
           </div>
-           <div *ngIf="
+          <div *ngIf="
            MetaFormDes['FormOptions'][i]['FormOptionType']=='select' ||
            MetaFormDes['FormOptions'][i]['FormOptionType']=='radio' ||
            MetaFormDes['FormOptions'][i]['FormOptionType']=='checkbox'
            ">
-           <div *ngFor="let formoptiondata of MetaFormDes['FormOptions'][i]['FormOptionData'] ;let a =index">
-             <md-input-container style="width:100%">
-                  <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData']" [name]="'FormOptionData'+i">
-                </md-input-container>
-           </div>
-
-
-           </div>
+            <div *ngFor="let m of item.FormOptionData ;let a =index">
+              <md-input-container style="width:100%">
+                <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData'][a]" [name]="'FormOptionData'+a">
+              </md-input-container>
+              <div class="button-row">
+                <button md-raised-button type="button" (click)="onAddOptionsData(i, a)">
+                                <md-icon>add</md-icon>
+                              </button>
+                <button md-raised-button type="button" (click)="onRemoveOptionsData(i, a)">
+                                  <md-icon>remove</md-icon>
+                                  </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       data:{{f["value"]|json}}
