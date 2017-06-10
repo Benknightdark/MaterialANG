@@ -37,11 +37,9 @@
       <div *ngIf="showform">
         <div *ngFor="let item of MetaformDataArray ; let i=index">
 
-          <md-divider style="margin-bottom:5%">
+          <md-divider style="margin-bottom:1%"> </md-divider>
 
-          </md-divider>
-
-          <md-toolbar color="primary">
+          <md-toolbar style="margin-bottom:2%">
             <div class="button-row">
               表單相關選項{{i+1}}
               <button md-mini-fab type="button" style="background:yellow" (click)="onAddFormOptions(i)"><md-icon style="color:black">add</md-icon></button>
@@ -79,8 +77,8 @@
             <tr>
               <td>
                 <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='input'">
-                  <md-select placeholder="輸入選項類型" style="width:100%" [(ngModel)]="MetaFormDes['FormOptions'][i]['InputType']" [name]="'InputType'+i"
-                    required>
+                  <md-select placeholder="輸入選項類型" [(ngModel)]="MetaFormDes['FormOptions'][i]['InputType']" [name]="'InputType'+i" required
+                    style="  width:100%   ; margin-top: 20px;">
                     <md-option [value]="null" selected="selected"></md-option>
                     <md-option *ngFor="let m of item.InputTypes ;let a =index" [value]="m.value">
                       {{ m.name }} {{m.value}}
@@ -89,37 +87,46 @@
                 </div>
               </td>
             </tr>
+            <tr>
+              <td>
+                <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='select'">
+                  是否為複選：
+                  <md-radio-group [(ngModel)]="MetaFormDes['FormOptions'][i]['isMultiSelect']" [name]="'isMultiSelect'+i" required>
+                    <md-radio-button [value]=[ismultiselect.value] *ngFor="let ismultiselect of item.isMultiSelect">{{ismultiselect.name}}
+                    </md-radio-button>
+                  </md-radio-group>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="
+                      MetaFormDes['FormOptions'][i]['FormOptionType']=='select' ||
+                      MetaFormDes['FormOptions'][i]['FormOptionType']=='radio' ||
+                      MetaFormDes['FormOptions'][i]['FormOptionType']=='checkbox'
+                      ">
+
+                  <div *ngFor="let m of item.FormOptionData ;let a =index">
+                    <md-input-container style="width:100%">
+                      <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData'][a]" [name]="'FormOptionData'+i+'-'+a"
+                        required>
+                    </md-input-container>
+                    <div class="button-row">
+                      <button md-raised-button type="button" (click)="onAddOptionsData(i, a)">
+                                <md-icon>add</md-icon>
+                              </button>
+                      <button md-raised-button type="button" (click)="onRemoveOptionsData(i, a)">
+                                  <md-icon>remove</md-icon>
+                                  </button>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
           </table>
 
 
-          <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='select'">
-            是否為複選：
-            <md-radio-group [(ngModel)]="MetaFormDes['FormOptions'][i]['isMultiSelect']" [name]="'isMultiSelect'+i" required>
-              <md-radio-button [value]=[ismultiselect.value] *ngFor="let ismultiselect of item.isMultiSelect">{{ismultiselect.name}}
-              </md-radio-button>
-            </md-radio-group>
-          </div>
-          <div *ngIf="
-           MetaFormDes['FormOptions'][i]['FormOptionType']=='select' ||
-           MetaFormDes['FormOptions'][i]['FormOptionType']=='radio' ||
-           MetaFormDes['FormOptions'][i]['FormOptionType']=='checkbox'
-           ">
 
-            <div *ngFor="let m of item.FormOptionData ;let a =index">
-              <md-input-container style="width:100%">
-                <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData'][a]" [name]="'FormOptionData'+i+'-'+a"
-                  required>
-              </md-input-container>
-              <div class="button-row">
-                <button md-raised-button type="button" (click)="onAddOptionsData(i, a)">
-                                <md-icon>add</md-icon>
-                              </button>
-                <button md-raised-button type="button" (click)="onRemoveOptionsData(i, a)">
-                                  <md-icon>remove</md-icon>
-                                  </button>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
