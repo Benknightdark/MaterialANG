@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-templateformmeta',
@@ -33,7 +33,7 @@ export class TemplateformmetaComponent implements OnInit {
     return {
       FormOptionType: "",
       FormOptionName: "",
-      InputOption: "",
+      InputType: "",
       Required: "",
       isMulti: "",
     }

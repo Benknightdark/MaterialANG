@@ -59,17 +59,20 @@
               </td>
             </tr>
 
-            <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='input'">
-              <tr>
-                <td>
-                    <h2>input option selected</h2>
 
-                </td>
-              </tr>
-            </div>
 
           </table>
+          <div *ngIf="MetaFormDes['FormOptions'][i]['FormOptionType']=='input'">
 
+            <md-select placeholder="輸入選項類型" style="width:100%" [(ngModel)]="MetaFormDes['FormOptions'][i]['InputType']" [name]="'InputType'+i">
+              <md-option [value]="null" selected="selected"></md-option>
+              <md-option *ngFor="let m of item.InputTypes ;let a =index" [value]="m.value">
+                {{ m.name }} {{m.value}}
+              </md-option>
+            </md-select>
+
+
+          </div>
         </div>
       </div>
       data:{{f["value"]|json}}
