@@ -10,12 +10,10 @@ export class MetaformService {
   constructor(private http:Http,private db: AngularFireDatabase) { }
   GetMetaformData(){
 
-   return  this.http.get("http://localhost:3000/FormMeta")
-       .map(res => res.json()).share();
+return  this.db.object('/MetaformData').share();
+
  // return this.db.object('/MetaformData').share();
   }
-  test(){
-   return  firebase.storage().ref()
-  }
+
 
 }
