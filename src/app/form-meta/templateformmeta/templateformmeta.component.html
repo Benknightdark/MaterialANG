@@ -80,7 +80,11 @@
            MetaFormDes['FormOptions'][i]['FormOptionType']=='radio' ||
            MetaFormDes['FormOptions'][i]['FormOptionType']=='checkbox'
            ">
+<<<<<<< HEAD
             <div *ngFor="let m of item.FormOptionData ;let a =index">
+=======
+            <div *ngFor="let m of MetaFormDes['FormOptions'][i]['FormOptionData'] ;let a =index">
+>>>>>>> e3e001ae696afce0ae162248abafed03e33aa246
               <md-input-container style="width:100%">
                 <input mdInput placeholder="選項資料" type="text" [(ngModel)]="MetaFormDes['FormOptions'][i]['FormOptionData'][a]" [name]="'FormOptionData'+a">
               </md-input-container>
