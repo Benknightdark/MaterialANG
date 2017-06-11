@@ -95,11 +95,8 @@ export class TemplateformmetaComponent implements OnInit {
 
     const ImageName = (Date.now() + ".jpg")
     firebase.storage().ref().child("/test/" + ImageName).putString(this.MetaFormDes.imageinfo, 'base64').then((snapshot) => {
-
       //this.MetaFormDes.imageinfo=
       firebase.storage().ref().child("/test/" + ImageName).getDownloadURL().then(a => {
-        console.log(snapshot)
-        console.log(firebase.storage().ref().child("/test/" + ImageName).getDownloadURL())
         const id = UUID.UUID();
         this.MetaFormDes.id = id;
         this.MetaFormDes.imageinfo = a;
