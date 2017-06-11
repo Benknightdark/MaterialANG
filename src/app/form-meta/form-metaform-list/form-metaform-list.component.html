@@ -1,6 +1,39 @@
-<md-card>
-  <md-card-content>
+<ng2-md-datatable selectable>
+  <ng2-md-datatable-header>
+    <ng2-md-datatable-column sortableValue="article">Article</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="product">Product</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+      <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+        <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+          <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+            <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+              <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+                <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+                  <ng2-md-datatable-column sortableValue="quantity" numeric>Quantity</ng2-md-datatable-column>
+  </ng2-md-datatable-header>
+  <tbody>
+    <ng2-md-datatable-row selectableValue="K003-0350-001">
+      <td>K003-0350-001</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td class="numeric">232</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+      <td>Yirgacheffe Kaffee, 350g ganze Bohne</td>
+    </ng2-md-datatable-row>
 
-
-  </md-card-content>
-</md-card>
+  </tbody>
+</ng2-md-datatable>
+<ng2-md-datatable-pagination
+  [currentPage]="1"
+  [itemsPerPage]="5"
+  [itemsCount]="700"
+  [itemsPerPageChoices]="[5,10,20,50]"
+  [itemsPerPageFirstChoice]="10"
+  >
+</ng2-md-datatable-pagination>

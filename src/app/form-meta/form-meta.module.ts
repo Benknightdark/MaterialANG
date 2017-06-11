@@ -19,6 +19,7 @@ import { NgBoxModule } from 'ngbox/ngbox.module';
 
 import { NgBoxService } from 'ngbox/ngbox.service';
 import { BrowserModule } from "@angular/platform-browser";
+import { MdDataTableModule } from 'ng2-md-datatable';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import { BrowserModule } from "@angular/platform-browser";
     FirebaseapiModule,
     BrowserModule,
     ImageUploadModule.forRoot(),
-NgBoxModule
+NgBoxModule,
+MdDataTableModule
 
 
   ],
