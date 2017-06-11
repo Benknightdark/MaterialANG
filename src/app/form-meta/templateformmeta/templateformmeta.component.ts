@@ -23,7 +23,7 @@ export class TemplateformmetaComponent implements OnInit {
   showform: boolean = false;
   selectedValue = "";
   isOpenPreview: boolean = false;
-  isFinishSubmit:boolean=false;;
+  isFinishSubmit: boolean = false;;
   constructor(private db: AngularFireDatabase, private http: MetaformService) { }
 
   ngOnInit() {
@@ -31,7 +31,13 @@ export class TemplateformmetaComponent implements OnInit {
       this.MetaformDataArray.push(a);
       this.showform = true;
     })
-    //     console.log(firebase.storage().ref().child("/test/S__1859886.jpg").getDownloadURL())
+    this.http.GetFormData()
+      .subscribe(a => {
+        for (let i = 0; i < Object.keys(a).length; i++) {
+          console.log(Object.keys(a)[i])
+          console.log(a[Object.keys(a)[i]])
+        }
+      })    //     console.log(firebase.storage().ref().child("/test/S__1859886.jpg").getDownloadURL())
     // var message = '5b6p5Y+344GX44G+44GX44Gf77yB44GK44KB44Gn44Go44GG77yB';
     // var bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
     //     firebase.storage().ref().child("/test/aaa").putString(message,'base64').then((snapshot) => {
@@ -96,22 +102,22 @@ export class TemplateformmetaComponent implements OnInit {
   onSubmit(f) {
 
     const ImageName = (Date.now() + ".jpg")
-    this.isFinishSubmit=!this.isFinishSubmit;
+    this.isFinishSubmit = !this.isFinishSubmit;
     firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
       firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
         const id = UUID.UUID();
         this.MetaFormDes.id = id;
         this.MetaFormDes.imageinfo = a;
         console.log(this.MetaFormDes);
-        this.isFinishSubmit=!this.isFinishSubmit;
+        this.isFinishSubmit = !this.isFinishSubmit;
 
-        this.db.object('/FormData/'+this.MetaFormDes.id).set(this.MetaFormDes)
+        this.db.object('/FormData/' + this.MetaFormDes.id).set(this.MetaFormDes)
       })
     }).catch((e) => { console.log(e) });
   }
   imageUploaded(data) {
     console.log(data)
-     this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
+    this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
   }
   imageRemoved(event) {
     this.MetaFormDes.imageinfo = "";
