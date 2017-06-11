@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { MetaformService } from "app/services/metaform.service";
-
+import { UUID } from 'angular2-uuid';
 @Component({
   selector: 'app-templateformmeta',
   templateUrl: './templateformmeta.component.html',
@@ -10,6 +10,7 @@ import { MetaformService } from "app/services/metaform.service";
 })
 export class TemplateformmetaComponent implements OnInit {
   MetaFormDes = {
+    id:"",
     title: "",
     content: "",
     imageinfo: "",
@@ -91,6 +92,9 @@ export class TemplateformmetaComponent implements OnInit {
     }
   }
   onSubmit(f) {
+    const id=UUID.UUID();
+this.MetaFormDes.id=id;
+    console.log(this.MetaFormDes);
   }
   imageUploaded(data) {
     console.log(data)
