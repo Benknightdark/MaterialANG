@@ -10,7 +10,7 @@ import { UUID } from 'angular2-uuid';
 })
 export class TemplateformmetaComponent implements OnInit {
   MetaFormDes = {
-    id:"",
+    id: "",
     title: "",
     content: "",
     imageinfo: "",
@@ -92,21 +92,30 @@ export class TemplateformmetaComponent implements OnInit {
     }
   }
   onSubmit(f) {
-    const id=UUID.UUID();
-this.MetaFormDes.id=id;
-    console.log(this.MetaFormDes);
+
+    const ImageName = (Date.now() + ".jpg")
+    firebase.storage().ref().child("/test/" + ImageName).putString(this.MetaFormDes.imageinfo, 'base64').then((snapshot) => {
+
+      //this.MetaFormDes.imageinfo=
+      firebase.storage().ref().child("/test/" + ImageName).getDownloadURL().then(a => {
+        console.log(snapshot)
+        console.log(firebase.storage().ref().child("/test/" + ImageName).getDownloadURL())
+        const id = UUID.UUID();
+        this.MetaFormDes.id = id;
+        this.MetaFormDes.imageinfo = a;
+        console.log(this.MetaFormDes);
+      })
+    }).catch((e) => { console.log(e) });
   }
   imageUploaded(data) {
     console.log(data)
-    const DMImage = data["src"] //.replace("data:image/jpeg;base64,","")
+    const DMImage = data["src"].replace("data:image/jpeg;base64,", "")
     this.MetaFormDes.imageinfo = DMImage;
-    //       firebase.storage().ref().child("/test/"+(Date.now()+".jpg")).putString(DMImage,'base64').then((snapshot) => {
-    //               console.log(snapshot)
-    //           }).catch((e)=>{console.log(e)});
+
 
   }
   imageRemoved(event) {
-    this.MetaFormDes.imageinfo ="";
+    this.MetaFormDes.imageinfo = "";
     console.log(event)
   }
   disableSendButton(event) {
