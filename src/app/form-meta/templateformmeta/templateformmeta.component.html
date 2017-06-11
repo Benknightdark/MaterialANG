@@ -128,7 +128,10 @@
       </div>
       <!--    data:{{f["value"]|json}}-->
       <md-card-actions>
+       <div *ngIf="isFinishSubmit"><md-spinner></md-spinner></div>
+       <div *ngIf="!isFinishSubmit">
         <button md-button type="submit" style="    background: yellow;" [disabled]="f['invalid']">送出</button>
+        </div>
       </md-card-actions>
     </form>
   </md-card-content>

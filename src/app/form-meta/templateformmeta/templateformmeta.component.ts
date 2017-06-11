@@ -18,10 +18,12 @@ export class TemplateformmetaComponent implements OnInit {
       this.ReturnFormOptions()
     ]
   };
+  DMImage;
   MetaformDataArray = []
   showform: boolean = false;
   selectedValue = "";
   isOpenPreview: boolean = false;
+  isFinishSubmit:boolean=false;;
   constructor(private db: AngularFireDatabase, private http: MetaformService) { }
 
   ngOnInit() {
@@ -94,22 +96,20 @@ export class TemplateformmetaComponent implements OnInit {
   onSubmit(f) {
 
     const ImageName = (Date.now() + ".jpg")
-    firebase.storage().ref().child("/test/" + ImageName).putString(this.MetaFormDes.imageinfo, 'base64').then((snapshot) => {
-      //this.MetaFormDes.imageinfo=
+    this.isFinishSubmit=!this.isFinishSubmit;
+    firebase.storage().ref().child("/test/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
       firebase.storage().ref().child("/test/" + ImageName).getDownloadURL().then(a => {
         const id = UUID.UUID();
         this.MetaFormDes.id = id;
         this.MetaFormDes.imageinfo = a;
         console.log(this.MetaFormDes);
+        this.isFinishSubmit=!this.isFinishSubmit;
       })
     }).catch((e) => { console.log(e) });
   }
   imageUploaded(data) {
     console.log(data)
-    const DMImage = data["src"].replace("data:image/jpeg;base64,", "")
-    this.MetaFormDes.imageinfo = DMImage;
-
-
+     this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
   }
   imageRemoved(event) {
     this.MetaFormDes.imageinfo = "";
