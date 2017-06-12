@@ -10,52 +10,37 @@ export class FormMetaformListComponent implements OnInit {
 
   constructor(private http: MetaformService) {
 
-     window.onresize = () => {
+    window.onresize = () => {
       this.scrollBarHorizontal = (window.innerWidth < 1200);
     };
-   }
-
+  }
   scrollBarHorizontal = (window.innerWidth < 1200);
-
-
   rows;
   columns
   MetaFormData
+  showtable = false;
   ngOnInit() {
-    this.http.GetFormData().map(a=>{console.log(a)}).subscribe(data=>
-    {
-
-
-    console.log(data)
-
+    this.http.GetFormData().subscribe(data => {
+      // this.columns = [
+      //    { prop: 'id' },
+      //   { prop: 'title' },
+      //   { prop: 'CreateTime' },
+      //   { prop: 'UpdateTime' },
+      // ];
+      this.rows = data;
+      console.log(data)
+      this.showtable = true;
     }
-
-
     )
 
-
-       this.rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane',A:"<test>FSADddddddddddddddddddFAS</test>",B:"<test>FASFdddddddddddddddddddddddddddddddddddddddASDF</test>",C:"FASFASDF",D:"FASFASDF",E:"FASFASDF",F:"FASFASDF"},
-    { name: 'Dany', gender: 'Male', company: 'KFC',A:"FSADFAS",B:"FASFASDF",C:"FASFASDF",D:"FASFASDF",E:"FASFASDF",F:"FASFASDF" },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' ,A:"FSADFAS",B:"FASFASDF",C:"FASFASDF",D:"FASFASDF",E:"FASFASDF",F:"FASFASDF"},
-
-  ];
-  this.columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' },
-     { prop: 'A' },
-    { prop: 'B' },
-    {prop: 'C' },
-
- { prop: 'D' },
-    { prop: 'E' },
-    { prop: 'F' },
-
-
-
-  ];
-
   }
-
+  onDetail(id) {
+    console.log(id)
+  }
+  onDelete(id) {
+    console.log(id)
+  }
+  onEdit(id) {
+    console.log(id)
+  }
 }

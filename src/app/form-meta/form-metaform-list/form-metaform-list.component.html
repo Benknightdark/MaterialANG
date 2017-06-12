@@ -1,15 +1,26 @@
+<ngx-datatable class="material fullscreen" [columnMode]="'fixed'" [scrollbarH]="true" [rows]="rows" [columns]="" [headerHeight]="50"
+  [footerHeight]="50" [rowHeight]="'auto'">
 
-<ngx-datatable
-        class="material fullscreen"
-       [columnMode]="'force'"
-
-        [scrollbarH]="true"
-        [rows]="rows"
-
-        [columns]="columns"
-         [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="'auto'"
-        >
-      </ngx-datatable>
-
+  <ngx-datatable-column name="CRUD">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <button type="button" (click)="onDetail(row.id)">明細</button>
+      <button type="button" (click)="onEdit(row.id)">編輯</button>
+      <button type="button" (click)="onDelete(row.id)">刪除</button>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="title">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.title}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="UpdateTime">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.UpdateTime}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="CreateTime">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.CreateTime}}
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

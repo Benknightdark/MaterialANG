@@ -19,10 +19,11 @@ export class MetaformService {
         let listdata=[]
         for(let i=0;i<data.length;i++){
            listdata.push( {
-                id:data[i].id,
+
                 title:data[i].title,
                 CreateTime:data[i].CreateTime,
-                UpdateTime:data[i].UpdateTime
+                UpdateTime:data[i].UpdateTime,
+                id:data[i].id
            })
         }
         return listdata;
