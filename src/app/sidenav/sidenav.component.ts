@@ -21,293 +21,37 @@ export class SidenavComponent implements OnInit {
         this.menudata = data
         this.ShowMenu = true
       })
-    //detect browser width change event
+
     Observable.fromEvent(window, 'resize')
       .map(() => {
         return document.documentElement.clientWidth;
       })
-      // .debounceTime(200)
       .subscribe(data => {
-        console.log(data)
-        if (data < 500) {
-          this.AutoHideMenu = true;;
-        } else {
-          this.AutoHideMenu = false;;
-        }
-        document.getElementsByClassName("datatable-header")[0]["style"] = "100%"
-        document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+        this.BrowserElement(data)
       });
 
     Observable.fromEvent(window, 'load')
       .map(() => {
         return document.documentElement.clientWidth;
       })
-      //.debounceTime(200)
       .subscribe(data => {
-        console.log(data)
-        if (data < 500) {
-          this.AutoHideMenu = true;;
-        } else {
-          this.AutoHideMenu = false;;
-        }
-        document.getElementsByClassName("datatable-header")[0]["style"] = "100%"
-        document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+        this.BrowserElement(data)
       });
 
 
   }
   showside(a) {
-
     a.opened = !a.opened
-    console.log((document.getElementsByClassName("datatable-header") as any).scrollWidth = "100%")
-    console.log((document.getElementsByClassName("datatable-body") as any).scrollWidth = "100%")
-
-
+    document.getElementsByClassName("datatable-header")[0]["style"].width = "100%"
+    document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
   }
-
+  BrowserElement(data) {
+    if (data < 500) {
+      this.AutoHideMenu = true;;
+    } else {
+      this.AutoHideMenu = false;;
+    }
+    document.getElementsByClassName("datatable-header")[0]["style"].width = "100%"
+    document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+  }
 }
-/*
-this.menudata=
-  [
-
-      {
-        "Entity": {
-          "Text": "系統管理",
-          "Action": null,
-          "Controller": null,
-          "Area": "",
-          "Description": null,
-          "Icon": "computer",
-          "Selected": false,
-          "IsMobile": true,
-          "ID": "e3888930-131d-42b8-ab09-6ecb69184f33",
-          "CCID": null,
-          "ParentID": null,
-          "Children": null
-        },
-        "ChildNodes": [
-          {
-            "Entity": {
-              "Text": "內容管理模組",
-              "Action": null,
-              "Controller": null,
-              "Area": "",
-              "Description": null,
-              "Icon": null,
-              "Selected": false,
-              "IsMobile": true,
-              "ID": "f311e253-ac0b-4c2d-ac51-854fa0d5b084",
-              "CCID": null,
-              "ParentID": "e3888930-131d-42b8-ab09-6ecb69184f33",
-              "Children": null
-            },
-            "ChildNodes": [
-              {
-                "Entity": {
-                  "Text": "系統模組管理",
-                  "Action": "Index",
-                  "Controller": "Category",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "5a078e28-33eb-4446-8204-3b06bebbf5f2",
-                  "CCID": "a67ea328-c8ca-4a56-8db7-a16aa3c676fd",
-                  "ParentID": "f311e253-ac0b-4c2d-ac51-854fa0d5b084",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "系統功能管理",
-                  "Action": "Index",
-                  "Controller": "Content",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "06910a9d-9aee-4cfd-8a6a-2d1b9b41d446",
-                  "CCID": "a90a8b16-338b-4082-a378-90594dcad3c5",
-                  "ParentID": "f311e253-ac0b-4c2d-ac51-854fa0d5b084",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "分類代碼管理",
-                  "Action": "Index",
-                  "Controller": "TypeCode",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "9acee8fd-aff2-498e-8927-a89d4f4c81e0",
-                  "CCID": "2963e2b1-471b-41f8-a65e-e6ab1fe9ffa0",
-                  "ParentID": "f311e253-ac0b-4c2d-ac51-854fa0d5b084",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "資料表欄位名稱維護",
-                  "Action": "Index",
-                  "Controller": "TableColumnsMap",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "22659d57-a508-46b9-a2c3-aaf1541d398d",
-                  "CCID": "33b13d47-a269-4cf2-aaac-e99d745591d0",
-                  "ParentID": "f311e253-ac0b-4c2d-ac51-854fa0d5b084",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              }
-            ],
-            "Depth": 2
-          },
-          {
-            "Entity": {
-              "Text": "系統管理模組",
-              "Action": null,
-              "Controller": null,
-              "Area": "",
-              "Description": null,
-              "Icon": null,
-              "Selected": false,
-              "IsMobile": true,
-              "ID": "eb4ba562-aa0a-425a-8d32-0d19e0e561c6",
-              "CCID": null,
-              "ParentID": "e3888930-131d-42b8-ab09-6ecb69184f33",
-              "Children": null
-            },
-            "ChildNodes": [
-              {
-                "Entity": {
-                  "Text": "系統環境變數管理",
-                  "Action": "Index",
-                  "Controller": "Environment",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "2a4d96c7-fb16-44e8-834d-bfa03794b622",
-                  "CCID": "cffb92c4-df84-4ef5-8938-ffe9869b568b",
-                  "ParentID": "eb4ba562-aa0a-425a-8d32-0d19e0e561c6",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              }
-            ],
-            "Depth": 2
-          },
-          {
-            "Entity": {
-              "Text": "功能授權模組",
-              "Action": null,
-              "Controller": null,
-              "Area": "",
-              "Description": null,
-              "Icon": null,
-              "Selected": false,
-              "IsMobile": true,
-              "ID": "7d9b9786-f905-4cec-b516-2eeff39884dd",
-              "CCID": null,
-              "ParentID": "e3888930-131d-42b8-ab09-6ecb69184f33",
-              "Children": null
-            },
-            "ChildNodes": [
-              {
-                "Entity": {
-                  "Text": "條件管理",
-                  "Action": "Index",
-                  "Controller": "Condition",
-                  "Area": "DA",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "6d5d2e30-5d2a-422e-9249-b14b3145ba71",
-                  "CCID": "ebb7a422-7853-416e-8b46-ac7aa83650c0",
-                  "ParentID": "7d9b9786-f905-4cec-b516-2eeff39884dd",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "使用者管理",
-                  "Action": "Index",
-                  "Controller": "User",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "ad7629fe-8be1-4aa9-b964-1ba968156211",
-                  "CCID": "6cc261d1-8614-4ebd-bb9f-71233074a015",
-                  "ParentID": "7d9b9786-f905-4cec-b516-2eeff39884dd",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "角色管理",
-                  "Action": "Index",
-                  "Controller": "Role",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "687eff15-2979-44f6-9757-1568219e3a4d",
-                  "CCID": "81047ae6-c51a-4f1c-b979-5dfc072ccca6",
-                  "ParentID": "7d9b9786-f905-4cec-b516-2eeff39884dd",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              },
-              {
-                "Entity": {
-                  "Text": "授權管理",
-                  "Action": "Index",
-                  "Controller": "Authorize",
-                  "Area": "Portal",
-                  "Description": null,
-                  "Icon": null,
-                  "Selected": false,
-                  "IsMobile": true,
-                  "ID": "85bcbe0d-eb12-438f-b1c4-10bb5f221c51",
-                  "CCID": "03e8c15e-ad8e-4ec2-ba17-a7e9ab96d158",
-                  "ParentID": "7d9b9786-f905-4cec-b516-2eeff39884dd",
-                  "Children": null
-                },
-                "ChildNodes": [],
-                "Depth": 3
-              }
-            ],
-            "Depth": 2
-          }
-        ],
-        "Depth": 1
-      }
-    ]
-
-*/
