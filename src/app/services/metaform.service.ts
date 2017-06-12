@@ -13,7 +13,7 @@ export class MetaformService {
   }
 
   GetFormData() {
-    return this.db.object('/FormData').map(c=>c).share();
+    return this.db.list('/FormData').share();
   }
 
 

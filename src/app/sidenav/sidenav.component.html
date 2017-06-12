@@ -7,15 +7,15 @@
 
 <md-sidenav-container fullscreen>
   <md-toolbar color="primary">
-    <a md-button href="javasrcipt:void(0)" (click)="showside(sidenav)">
+    <button  md-button type="button" (click)="showside(sidenav)">
       <md-icon>menu</md-icon>
-    </a>
+    </button>
     <span>GOGOGOGOG</span>
   </md-toolbar>
   <md-sidenav #sidenav class="example-sidenav" mode="side" [opened]="!AutoHideMenu">
     <md-list dense>
       <md-list-item>
-        <a md-button [routerLink]="['/formmetaform']" md-line>報名表單建立</a>
+        <a md-button [routerLink]="['/formmetaformlist']" md-line>報名表單管理</a>
       </md-list-item>
 
       <div *ngIf="ShowMenu">

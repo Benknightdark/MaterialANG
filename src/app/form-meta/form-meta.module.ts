@@ -19,7 +19,8 @@ import { NgBoxModule } from 'ngbox/ngbox.module';
 
 import { NgBoxService } from 'ngbox/ngbox.service';
 import { BrowserModule } from "@angular/platform-browser";
-import { MdDataTableModule } from 'ng2-md-datatable';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +33,7 @@ import { MdDataTableModule } from 'ng2-md-datatable';
     BrowserModule,
     ImageUploadModule.forRoot(),
 NgBoxModule,
-MdDataTableModule
+NgxDatatableModule
 
 
   ],

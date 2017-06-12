@@ -51,7 +51,14 @@ export class SidenavComponent implements OnInit {
 
 
   }
-  showside(a) { a.opened = !a.opened }
+  showside(a) {
+
+    a.opened = !a.opened
+ console.log( ( document.getElementsByClassName("datatable-header") as any).scrollWidth="100%")
+ console.log( ( document.getElementsByClassName("datatable-body") as any).scrollWidth="100%")
+
+
+}
 
 }
 /*
