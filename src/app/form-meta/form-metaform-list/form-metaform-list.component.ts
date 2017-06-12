@@ -21,12 +21,12 @@ export class FormMetaformListComponent implements OnInit {
   showtable = false;
   ngOnInit() {
     this.http.GetFormData().subscribe(data => {
-      // this.columns = [
-      //    { prop: 'id' },
-      //   { prop: 'title' },
-      //   { prop: 'CreateTime' },
-      //   { prop: 'UpdateTime' },
-      // ];
+      this.columns = [
+         { prop: 'id' },
+        { prop: 'title' },
+        { prop: 'CreateTime' },
+        { prop: 'UpdateTime' },
+      ];
       this.rows = data;
       console.log(data)
       this.showtable = true;
