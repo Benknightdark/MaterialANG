@@ -2,6 +2,7 @@ import { Http } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/'
 import 'rxjs'
+import { element } from 'protractor';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -25,40 +26,44 @@ export class SidenavComponent implements OnInit {
       .map(() => {
         return document.documentElement.clientWidth;
       })
-     // .debounceTime(200)
-    .subscribe(data => {
-      console.log(data)
-      if (data < 500) {
-        this.AutoHideMenu = true;;
-      }else{
-        this.AutoHideMenu = false;;
-      }
-    });
+      // .debounceTime(200)
+      .subscribe(data => {
+        console.log(data)
+        if (data < 500) {
+          this.AutoHideMenu = true;;
+        } else {
+          this.AutoHideMenu = false;;
+        }
+        document.getElementsByClassName("datatable-header")[0]["style"] = "100%"
+        document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+      });
 
-     Observable.fromEvent(window, 'load')
+    Observable.fromEvent(window, 'load')
       .map(() => {
         return document.documentElement.clientWidth;
       })
       //.debounceTime(200)
-    .subscribe(data => {
-      console.log(data)
-      if (data < 500) {
-        this.AutoHideMenu = true;;
-      }else{
-        this.AutoHideMenu = false;;
-      }
-    });
+      .subscribe(data => {
+        console.log(data)
+        if (data < 500) {
+          this.AutoHideMenu = true;;
+        } else {
+          this.AutoHideMenu = false;;
+        }
+        document.getElementsByClassName("datatable-header")[0]["style"] = "100%"
+        document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+      });
 
 
   }
   showside(a) {
 
     a.opened = !a.opened
- console.log( ( document.getElementsByClassName("datatable-header") as any).scrollWidth="100%")
- console.log( ( document.getElementsByClassName("datatable-body") as any).scrollWidth="100%")
+    console.log((document.getElementsByClassName("datatable-header") as any).scrollWidth = "100%")
+    console.log((document.getElementsByClassName("datatable-body") as any).scrollWidth = "100%")
 
 
-}
+  }
 
 }
 /*
