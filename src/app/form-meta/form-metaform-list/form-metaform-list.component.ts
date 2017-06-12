@@ -9,7 +9,7 @@ import { Router ,ActivatedRoute } from "@angular/router";
 })
 export class FormMetaformListComponent implements OnInit {
 
-  constructor(private http: MetaformService,  private router:Router ,private routing:ActivatedRoute) {
+  constructor(private http: MetaformService,  private router:Router) {
 
     window.onresize = () => {
       this.scrollBarHorizontal = (window.innerWidth < 1200);
