@@ -53,5 +53,6 @@ export class SidenavComponent implements OnInit {
     }
     document.getElementsByClassName("datatable-header")[0]["style"].width = "100%"
     document.getElementsByClassName("datatable-body")[0]["style"].width = "100%"
+
   }
 }

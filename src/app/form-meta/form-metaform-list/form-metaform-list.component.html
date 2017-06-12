@@ -1,11 +1,15 @@
 
 <ngx-datatable
         class="material fullscreen"
-       [columnMode]="'standard'"
+       [columnMode]="'force'"
 
         [scrollbarH]="true"
         [rows]="rows"
 
-        [columns]="columns">
+        [columns]="columns"
+         [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        >
       </ngx-datatable>
 
