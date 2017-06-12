@@ -13,7 +13,22 @@ export class MetaformService {
   }
 
   GetFormData() {
-    return this.db.list('/FormData').share();
+   return this.db.list('/FormData')
+   .map(
+      data=>{
+        let listdata=[]
+        for(let i=0;i<data.length;i++){
+           listdata.push( {
+                id:data[i].id,
+                title:data[i].title,
+                CreateTime:data[i].CreateTime,
+                UpdateTime:data[i].UpdateTime
+           })
+        }
+        return listdata;
+        //console.log(data[0])
+      }
+    ).share();
   }
 
 

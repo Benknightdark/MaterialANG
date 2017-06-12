@@ -22,14 +22,17 @@ export class FormMetaformListComponent implements OnInit {
   columns
   MetaFormData
   ngOnInit() {
-    this.http.GetFormData()
-      .subscribe(a => {
-        // for (let i = 0; i < Object.keys(a).length; i++) {
-        //   //console.log(Object.keys(a)[i])
-        //   console.log(a[Object.keys(a)[i]])
-        // }
-        console.log(a)
-      })
+    this.http.GetFormData().map(a=>{console.log(a)}).subscribe(data=>
+    {
+
+
+    console.log(data)
+
+    }
+
+
+    )
+
 
        this.rows = [
     { name: 'Austin', gender: 'Male', company: 'Swimlane',A:"<test>FSADddddddddddddddddddFAS</test>",B:"<test>FASFdddddddddddddddddddddddddddddddddddddddASDF</test>",C:"FASFASDF",D:"FASFASDF",E:"FASFASDF",F:"FASFASDF"},
