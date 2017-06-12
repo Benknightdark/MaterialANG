@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaformService } from "app/services/metaform.service";
+import { Router ,ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-form-metaform-list',
@@ -8,7 +9,7 @@ import { MetaformService } from "app/services/metaform.service";
 })
 export class FormMetaformListComponent implements OnInit {
 
-  constructor(private http: MetaformService) {
+  constructor(private http: MetaformService,  private router:Router ,private routing:ActivatedRoute) {
 
     window.onresize = () => {
       this.scrollBarHorizontal = (window.innerWidth < 1200);
@@ -22,7 +23,7 @@ export class FormMetaformListComponent implements OnInit {
   ngOnInit() {
     this.http.GetFormData().subscribe(data => {
       this.columns = [
-         { prop: 'id' },
+        { prop: 'id' },
         { prop: 'title' },
         { prop: 'CreateTime' },
         { prop: 'UpdateTime' },
@@ -33,6 +34,9 @@ export class FormMetaformListComponent implements OnInit {
     }
     )
 
+  }
+  onCreate(){
+this.router.navigate(['/formmetaform/Create'])
   }
   onDetail(id) {
     console.log(id)

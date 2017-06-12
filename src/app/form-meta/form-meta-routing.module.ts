@@ -4,10 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { TemplateformmetaComponent } from './templateformmeta/templateformmeta.component';
 import { FormMetaformListComponent } from './form-metaform-list/form-metaform-list.component';
 const routes: Routes = [
-   {
-    path: 'formmetaform', component: TemplateformmetaComponent
+  {
+    path: 'formmetaform/Create', component: TemplateformmetaComponent
   },
-  {path:'formmetaformlist',component:FormMetaformListComponent}
+  { path: 'formmetaformlist', component: FormMetaformListComponent }
 ];
 
 @NgModule({

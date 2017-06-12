@@ -1,20 +1,33 @@
-<ngx-datatable class="material fullscreen" [columnMode]="'fixed'" [scrollbarH]="true" [rows]="rows" [columns]="" [headerHeight]="50"
+<md-card>
+  <md-card-content>
+
+  </md-card-content>
+  <md-card-actions>
+
+    <md-icon  (click)="onCreate()">add</md-icon>
+  </md-card-actions>
+</md-card>
+<ngx-datatable class="material fullscreen" [columnMode]="'fixed'" [scrollbarH]="true" [rows]="rows" [columns]="columns" [headerHeight]="50"
   [footerHeight]="50" [rowHeight]="'auto'">
-
-
-
-
   <div *ngFor="let column of columns">
     <div *ngIf="column.prop=='id'  else elseBlock">
-      <ngx-datatable-column name="CRUD">
+      <ngx-datatable-column name="">
         <ng-template let-row="row" ngx-datatable-cell-template>
-          <button type="button" (click)="onDetail(row.id)">明細</button>
-          <button type="button" (click)="onEdit(row.id)">編輯</button>
-          <button type="button" (click)="onDelete(row.id)">刪除</button>
+
+          <div style=" display: flex;
+                      align-items: center;
+                      justify-content: space-around;
+                       cursor: pointer; cursor: hand;
+                      "
+  >
+            <md-icon (click)="onDetail(row.id)">pageview</md-icon>
+            <md-icon (click)="onEdit(row.id)">edit</md-icon>
+            <md-icon (click)="onDelete(row.id)">delete</md-icon>
+          </div>
         </ng-template>
       </ngx-datatable-column>
     </div>
-  <ng-template #elseBlock>
+    <ng-template #elseBlock>
       <ngx-datatable-column [name]="column.prop">
         <ng-template let-row="row" ngx-datatable-cell-template>
           {{row[column.prop]}}
@@ -22,21 +35,4 @@
       </ngx-datatable-column>
     </ng-template>
   </div>
-
-
-  <!--<ngx-datatable-column name="title">
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.title}}
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name="UpdateTime">
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.UpdateTime}}
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name="CreateTime">
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.CreateTime}}
-    </ng-template>
-  </ngx-datatable-column>-->
 </ngx-datatable>
