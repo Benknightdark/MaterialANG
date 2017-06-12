@@ -3,6 +3,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import * as firebase from 'firebase';
 import { MetaformService } from "app/services/metaform.service";
 import { UUID } from 'angular2-uuid';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-templateformmeta',
   templateUrl: './templateformmeta.component.html',
@@ -26,7 +27,7 @@ export class TemplateformmetaComponent implements OnInit {
   selectedValue = "";
   isOpenPreview: boolean = false;
   isFinishSubmit: boolean = false;;
-  constructor(private db: AngularFireDatabase, private http: MetaformService) { }
+  constructor(private db: AngularFireDatabase, private http: MetaformService,private router: Router) { }
 
   ngOnInit() {
     this.http.GetMetaformData().subscribe(a => {
@@ -132,5 +133,8 @@ this.MetaFormDes.UpdateTime=Date.now().toString();
   }
   disableSendButton(event) {
     console.log(event)
+  }
+  onCancel(){
+this.router.navigate(['/formmetaformlist'])
   }
 }
