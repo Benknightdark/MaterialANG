@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaformService } from "app/services/metaform.service";
 import { Router ,ActivatedRoute } from "@angular/router";
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-form-metaform-list',
@@ -9,7 +10,7 @@ import { Router ,ActivatedRoute } from "@angular/router";
 })
 export class FormMetaformListComponent implements OnInit {
 
-  constructor(private http: MetaformService,  private router:Router) {
+  constructor(private http: MetaformService,  private router:Router,private db: AngularFireDatabase) {
 
     window.onresize = () => {
       this.scrollBarHorizontal = (window.innerWidth < 1200);
@@ -39,12 +40,17 @@ export class FormMetaformListComponent implements OnInit {
 this.router.navigate(['/formmetaform/Create'])
   }
   onDetail(id) {
+     this.db.list('/FormData/'+id).subscribe(a=>console.log(a))
     console.log(id)
   }
   onDelete(id) {
+    this.db.list('/FormData/'+id).subscribe(a=>console.log(a))
+
     console.log(id)
   }
   onEdit(id) {
+         this.db.list('/FormData/'+id).subscribe(a=>console.log(a))
+
     console.log(id)
   }
 }

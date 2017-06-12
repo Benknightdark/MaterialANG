@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs'
 import { AngularFireDatabase, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 @Injectable()
 export class MetaformService {
 
@@ -13,6 +14,7 @@ export class MetaformService {
   }
 
   GetFormData() {
+
    return this.db.list('/FormData')
    .map(
       data=>{
@@ -21,13 +23,14 @@ export class MetaformService {
            listdata.push( {
 
                 title:data[i].title,
-                CreateTime:data[i].CreateTime,
-                UpdateTime:data[i].UpdateTime,
+                CreateTime:moment.unix(data[i].CreateTime/1000).format("YYYY/MM/DD hh:mm:ss"), //data[i].CreateTime,// (new Date(data[i].CreateTime)).format("dd.mm.yyyy hh:MM:ss"),
+
+
+                UpdateTime: moment.unix(data[i].UpdateTime/1000).format("YYYY/MM/DD hh:mm:ss"),
                 id:data[i].id
            })
         }
         return listdata;
-        //console.log(data[0])
       }
     ).share();
   }
